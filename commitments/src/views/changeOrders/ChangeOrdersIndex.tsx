@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Button, DetailPage, Panel, Pill, Table, Typography, colors } from '@procore/core-react';
+import { useParams } from '@tanstack/react-router';
+import { GUARDRAILS } from '@/shared/guardrails';
 import { ProtoPageHeader } from '../shared/ProtoPageHeader';
 import { sovLines, contractData, formatCurrency, newScopeCOs, type ApprovedCO } from '../scheduleOfValues/sovData';
 import { ChangeOrderTaggingModal } from '../scheduleOfValues/ChangeOrderTaggingModal';
@@ -58,6 +60,11 @@ export function ChangeOrdersIndex() {
   const [showTagModal, setShowTagModal] = useState(false);
   const [selectedRow, setSelectedRow] = useState<CODisplayRow | null>(null);
 
+  const { companyId, itemId } = useParams({ strict: false });
+  const coToolBase = window.location.origin.replace(':3000', ':3001');
+  const base = GUARDRAILS.DEMO_ROUTE.BASE_PATH.replace('$companyId', String(companyId ?? GUARDRAILS.DEMO_ROUTE.COMPANY_ID));
+  const coSovHref = itemId ? `${coToolBase}${base}/items/${itemId}/schedule-of-values` : null;
+
   return (
     <>
       <ProtoPageHeader
@@ -94,17 +101,7 @@ export function ChangeOrdersIndex() {
           {/* Sub-section header + Export button */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
             <Typography intent="h3">Commitment Change Orders</Typography>
-            <button
-              style={{
-                display: 'flex', alignItems: 'center', gap: 6,
-                padding: '6px 14px', fontSize: 13, fontWeight: 500,
-                border: `1px solid ${colors.gray20}`, borderRadius: 4,
-                background: '#fff', cursor: 'pointer', color: colors.gray15,
-              }}
-            >
-              Export CCOs
-              <span style={{ fontSize: 10, color: colors.gray50 }}>▾</span>
-            </button>
+            <Button variant="secondary" size="sm">Export CCOs ▾</Button>
           </div>
 
           {/* Toolbar */}
@@ -119,14 +116,7 @@ export function ChangeOrdersIndex() {
                 <span style={{ color: colors.gray50, fontSize: 13 }}>🔍</span>
                 <span style={{ fontSize: 13, color: colors.gray70 }}>Search</span>
               </div>
-              <button style={{
-                display: 'flex', alignItems: 'center', gap: 6,
-                padding: '6px 12px', fontSize: 13, fontWeight: 500,
-                border: `1px solid ${colors.gray20}`, borderRadius: 4,
-                background: '#fff', cursor: 'pointer', color: colors.gray15,
-              }}>
-                ⚙ Filters
-              </button>
+              <Button variant="secondary" size="sm">Filters</Button>
             </div>
 
             {/* Right: group by + configure */}
@@ -140,14 +130,7 @@ export function ChangeOrdersIndex() {
                 <option>Status</option>
                 <option>Budget code</option>
               </select>
-              <button style={{
-                display: 'flex', alignItems: 'center', gap: 6,
-                padding: '6px 12px', fontSize: 13, fontWeight: 500,
-                border: `1px solid ${colors.gray20}`, borderRadius: 4,
-                background: '#fff', cursor: 'pointer', color: colors.gray15,
-              }}>
-                ⊞ Configure
-              </button>
+              <Button variant="secondary" size="sm">Configure</Button>
             </div>
           </div>
 
@@ -177,9 +160,13 @@ export function ChangeOrdersIndex() {
                   >
                     <Table.BodyCell snugfit>
                       <Table.TextCell>
-                        <span style={{ color: colors.blue45, fontWeight: 600, textDecoration: 'underline' }}>
+                        <a
+                          href={coSovHref ?? '#'}
+                          onClick={e => e.stopPropagation()}
+                          style={{ color: colors.blue45, fontWeight: 600, textDecoration: 'underline' }}
+                        >
                           {row.co.coNumber}
-                        </span>
+                        </a>
                       </Table.TextCell>
                     </Table.BodyCell>
                     <Table.BodyCell snugfit>
@@ -268,8 +255,11 @@ export function ChangeOrdersIndex() {
 
               <Panel.Footer>
                 <Panel.FooterActions>
-                  <Button variant="tertiary" onClick={() => setSelectedRow(null)}>Close</Button>
-                  <Button variant="primary">View change order</Button>
+                  <Button variant="secondary" onClick={() => setSelectedRow(null)}>Close</Button>
+                  {coSovHref
+                    ? <a href={coSovHref} style={{ textDecoration: 'none' }}><Button variant="primary">View change order</Button></a>
+                    : <Button variant="primary">View change order</Button>
+                  }
                 </Panel.FooterActions>
               </Panel.Footer>
             </Panel>

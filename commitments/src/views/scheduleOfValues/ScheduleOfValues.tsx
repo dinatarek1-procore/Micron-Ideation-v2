@@ -200,7 +200,7 @@ export function ScheduleOfValues() {
 
           {/* SOV table */}
           <Table.Container>
-            <Table style={{ width: '100%' }}>
+            <Table>
               <Table.Header>
                 <Table.HeaderRow>
                   <Table.HeaderCell snugfit>#</Table.HeaderCell>
@@ -300,6 +300,7 @@ export function ScheduleOfValues() {
               <Panel.Footer>
                 <Panel.FooterActions>
                   <Button variant="tertiary" onClick={() => setSelectedCO(null)}>Close</Button>
+                  <Button variant="primary">View change order</Button>
                 </Panel.FooterActions>
               </Panel.Footer>
             </Panel>
