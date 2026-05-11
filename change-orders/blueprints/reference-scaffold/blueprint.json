@@ -1,0 +1,40 @@
+{
+  "$schema": "../schemas/blueprint-manifest.schema.json",
+  "name": "reference-scaffold",
+  "description": "Default blueprint-simulator MFE scaffold: company items list, detail with tabs, create and edit item, permissions, and Mirage-backed APIs.",
+  "version": "0.1.0",
+  "author": "blueprint-simulator scaffold",
+  "toolName": "prototypeApp",
+  "basePath": "/companies/$companyId/tools/prototype",
+  "views": [
+    "list",
+    "detail",
+    "edit",
+    "create",
+    "permissions",
+    "itemEmails",
+    "itemRelatedItems",
+    "itemDocuments",
+    "itemHistory"
+  ],
+  "tabs": [
+    { "title": "Overview", "view": "detail", "titleKey": "tool.tabs.overview" },
+    { "title": "Emails", "view": "itemEmails", "titleKey": "tool.tabs.emails" },
+    {
+      "title": "Related items",
+      "view": "itemRelatedItems",
+      "titleKey": "tool.tabs.relatedItems"
+    },
+    {
+      "title": "Documents",
+      "view": "itemDocuments",
+      "titleKey": "tool.tabs.documents"
+    },
+    {
+      "title": "Change history",
+      "view": "itemHistory",
+      "titleKey": "tool.tabs.history"
+    }
+  ],
+  "listPageSize": 20
+}

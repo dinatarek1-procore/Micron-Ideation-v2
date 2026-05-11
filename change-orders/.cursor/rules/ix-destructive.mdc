@@ -1,0 +1,63 @@
+---
+description: IX Destructive Action tiers. Tier 1 (undo toast), Tier 2 (Modal), Tier 3 (typed confirmation) — tier dictates which primitive to reach for.
+globs: src/**/*.tsx
+alwaysApply: false
+implementationStatus: scaffold-only
+ownerPackage: core-react
+---
+
+# IX Destructive Action Tiers
+
+Every destructive action (delete, void, approve-with-impact) sorts into one of three tiers. The tier determines the primitive.
+
+## Tier 1 — Low-risk, reversible
+
+**Example:** archive a draft, remove a row that can be un-deleted.
+
+- **Primitive:** `@procore/toast-alert` — fire a toast with an "Undo" action.
+- **Duration:** 5-7 seconds.
+- **No modal.** No confirmation step. Act optimistically.
+- **No popover.** Popovers are not for destructive actions (see `ix-popover.mdc`).
+
+## Tier 2 — Irreversible, bounded
+
+**Example:** permanently delete an item, void a bid package.
+
+- **Primitive:** `@procore/core-react` `Modal` at z-50.
+- **Actions:** `[Cancel]` (secondary) + `[Delete Entity]` (destructive-styled, right-aligned).
+- **Scrim:** `fixed inset-0` covering the entire viewport (modal default).
+- Body should **name the entity** and explain irreversibility in one short sentence.
+
+## Tier 3 — Critical, cascading
+
+**Example:** delete a company's entire RFI log, remove a user with many assignments.
+
+- **Status: no pre-built primitive today.** Tracked as a `core-react-proposal` in `skills/ds-cheat-sheet/TOOLINATOR-EXTENSIONS.md` — typed-confirmation modal variant with a cascade-consequences list.
+- **Interim:** compose `Modal` (Tier 2 primitive) + a text input that must match a phrase (e.g. the entity name) before the destructive button enables. Render the cascade ("This will delete 47 related items") as a bulleted list in the modal body.
+- Reserve this tier for genuinely cascading / org-wide actions. Most product "delete" flows belong in Tier 2.
+
+## Role scope
+
+Destructive authority is narrower than creation authority:
+
+- **Author** can destroy own drafts.
+- **Controller** can destroy managed set.
+- **Reviewer / Consumer** cannot destroy.
+
+The scaffold does not encode role-based destruction; that lives at the product layer. The rule here is that the UI pattern must match the tier, regardless of which role triggers it.
+
+## Copy
+
+- Lead with the entity name. Never "Are you sure?" alone.
+- Tier 2 primary label: "Delete [Entity]" or "Void [Entity]" — verb + noun.
+- Tier 1 toast copy: "[Entity] archived. Undo."
+- Tier 3 typed-confirmation prompt: "Type [Entity name] to confirm."
+
+See the `procore-content-design` skill for broader copy guardrails.
+
+## Related
+
+- Modal / Tearsheet decision: `ix-patterns.mdc`.
+- Do NOT put destructive actions in popovers: `ix-popover.mdc`.
+
+Full rules: `skills/ds-cheat-sheet/REFERENCE.md`.

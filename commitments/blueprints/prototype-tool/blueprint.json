@@ -1,0 +1,24 @@
+{
+  "name": "prototype-tool",
+  "version": "0.0.1",
+  "toolName": "prototypeApp",
+  "basePath": "/companies/$companyId/tools/prototype",
+  "views": [
+    "list",
+    "create",
+    "detail",
+    "edit",
+    "hub",
+    "itemEmails",
+    "itemRelatedItems",
+    "itemHistory",
+    "permissions"
+  ],
+  "tabs": [
+    { "title": "General", "view": "detail" },
+    { "title": "Related Items", "view": "itemRelatedItems" },
+    { "title": "Emails", "view": "itemEmails" },
+    { "title": "Change History", "view": "itemHistory" }
+  ],
+  "listPageSize": 20
+}

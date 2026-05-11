@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://procore.local/schemas/blueprint-manifest.schema.json",
+  "title": "Earthmover blueprint manifest",
+  "description": "Metadata for a portable Procore tool blueprint (schemas + seed data).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "version", "toolName", "basePath"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "name": {
+      "type": "string",
+      "description": "Stable id for the blueprint (kebab-case recommended).",
+      "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$|^[a-z0-9]$"
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable summary of what the tool models."
+    },
+    "version": {
+      "type": "string",
+      "description": "Semantic version of the blueprint package.",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.-]+)?$"
+    },
+    "author": { "type": "string" },
+    "toolName": {
+      "type": "string",
+      "description": "Tool name passed to createConfig (often matches MFE service name)."
+    },
+    "basePath": {
+      "type": "string",
+      "description": "Tool base path with $companyId placeholder, e.g. /companies/$companyId/tools/my-tool",
+      "pattern": "^/companies/\\$companyId/tools/[a-z0-9-]+$"
+    },
+    "views": {
+      "type": "array",
+      "description": "Logical view ids registered with createView (optional inventory).",
+      "items": { "type": "string" }
+    },
+    "tabs": {
+      "type": "array",
+      "description": "Item-detail tab strip: title + view name.",
+      "items": {
+        "type": "object",
+        "required": ["title", "view"],
+        "additionalProperties": false,
+        "properties": {
+          "title": { "type": "string" },
+          "view": { "type": "string" },
+          "titleKey": {
+            "type": "string",
+            "description": "Optional i18n key for codegen into en.json / i18n.t()"
+          }
+        }
+      }
+    },
+    "listPageSize": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 500,
+      "default": 20
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "edit": {
+    "description": { "ui:widget": "textarea" },
+    "notes": { "ui:widget": "textarea" }
+  },
+  "detail": {
+    "id": { "ui:readonly": true },
+    "referenceCode": { "ui:readonly": true }
+  }
+}

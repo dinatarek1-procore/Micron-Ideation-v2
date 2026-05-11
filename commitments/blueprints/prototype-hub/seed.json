@@ -1,0 +1,65 @@
+{
+  "project": {
+    "name": "Miller Design",
+    "location": "1234 Main St, Carpinteria, CA 93013",
+    "stage": "Active",
+    "type": "Commercial — Office",
+    "startDate": "2026-01-15"
+  },
+  "links": [
+    { "label": "Drawing log", "url": "#" },
+    { "label": "Submittal package", "url": "#" },
+    { "label": "Jobsite Wi-Fi info", "url": "#" }
+  ],
+  "openItems": [
+    {
+      "id": 1,
+      "type": "RFI",
+      "title": "Ceiling plenum access — Level 3",
+      "due": "Apr 18, 2026",
+      "status": "open",
+      "number": "RFI-042",
+      "assignee": "Alex Kim",
+      "specSection": "09 51 00 — Acoustical Ceilings"
+    },
+    {
+      "id": 2,
+      "type": "Submittal",
+      "title": "Acoustical ceilings — shop drawings",
+      "due": "Apr 22, 2026",
+      "status": "pending",
+      "number": "SUB-018",
+      "assignee": "Jordan Lee",
+      "drawingRef": "A-301"
+    },
+    {
+      "id": 3,
+      "type": "Punch",
+      "title": "Corridor CE-3A — finish touch-ups",
+      "due": "Apr 10, 2026",
+      "status": "initiated",
+      "number": "PL-007",
+      "assignee": "Sam Patel",
+      "location": "Building A — Level 3"
+    }
+  ],
+  "analytics": {
+    "rfis": {
+      "total": 12,
+      "overdue": 2,
+      "dueSoon": 3,
+      "open": 5,
+      "pending": 2
+    },
+    "submittals": {
+      "total": 7,
+      "overdue": 1,
+      "dueSoon": 2,
+      "open": 3,
+      "pending": 1
+    }
+  },
+  "safety": {
+    "content": "<p><strong>Weekly Safety Stand-Down</strong></p><p>Topic: Fall protection awareness</p><ul><li>Inspect harnesses before each use</li><li>Guardrails required above 6 ft</li><li>Report hazards to site safety officer</li></ul><p>Next stand-down: Friday, April 24, 2026 at 7:00 AM</p>"
+  }
+}

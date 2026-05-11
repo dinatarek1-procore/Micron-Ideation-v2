@@ -1,0 +1,38 @@
+{
+  "edit": {
+    "ui:order": [
+      "summary",
+      "description",
+      "status",
+      "manager",
+      "receivedFrom",
+      "assignees",
+      "distributionList",
+      "ballInCourt",
+      "contractor",
+      "specSection",
+      "location",
+      "subJob",
+      "dueDate",
+      "dateInitiated",
+      "costCode",
+      "scheduleImpact",
+      "costImpact",
+      "reference",
+      "privateChecked"
+    ],
+    "description": { "ui:widget": "textarea" },
+    "status": { "ui:widget": "select" },
+    "dueDate": { "ui:widget": "date" },
+    "dateInitiated": { "ui:widget": "date" },
+    "ui:layout": { "columns": 4 }
+  },
+  "detail": {
+    "id": { "ui:readonly": true },
+    "number": { "ui:readonly": true },
+    "referenceCode": { "ui:readonly": true },
+    "createdBy": { "ui:readonly": true },
+    "status": { "ui:widget": "select" },
+    "ui:layout": { "columns": 4 }
+  }
+}

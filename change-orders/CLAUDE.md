@@ -1,0 +1,43 @@
+# Procore Content Design Standards
+
+This file is read automatically by Claude at session start. It ensures all user-facing copy in this prototype follows Procore's content design standards.
+
+For full standards and deep-dive workflows (Generate Copy, Review Copy, Conversation Design), load `skills/procore-content-design/SKILL.md`. This digest covers the highest-impact rules for day-to-day prototype work.
+
+## Rule Priority
+
+1. **Clarity** — user must understand the message; use correct glossary terms
+2. **Accuracy** — use the correct glossary term; never invent terminology
+3. **Brevity** — shorter is better, not at the cost of clarity or accuracy
+4. **Tone** — match the context tone table
+5. **Formatting** — capitalization, punctuation, date rules last
+
+When rules conflict, the higher-numbered rule yields to the lower.
+
+## Key Guardrails
+
+- **Never use internal/engineering names in UI copy:** Helix, Overflow menu, Tearsheet, MFE — rewrite with user-facing language
+- **AI-assisted buttons:** `[Verb] with AI` only (e.g. "Summarize with AI") — never "AI summarize," "Smart summarize," or "Ask AI to…"
+- **Error messages:** never blame the user; always apologetic and solutions-oriented; lead with "we're sorry" or equivalent when space allows
+- **Button labels:** max two words, always title case (three words allowed only for canonical AI-assisted controls)
+- **Confirmation modals:** only for destructive actions or unclear outcomes — never for straightforward results like "saved" or "created"
+
+## Terminology
+
+Never substitute colloquial synonyms for approved Procore glossary terms.
+
+**Common actions:** Add, Configure, Create, Delete, Move to Recycle Bin, Download, Upload, Export, Import, Edit, Bulk Edit, Generate, Publish, Save, View
+
+**UI terms:** Checkbox (not "check box"), Dropdown menu (not "dropdown"), Jobsite (one word), in the browser (not "on the browser"), Email (noun; use "send"/"receive" as verbs)
+
+## Content Review Checklist
+
+Run before finalizing any user-facing copy:
+
+- [ ] Voice is human, helpful, clear; tone matches context. Button labels ≤2 words, title case. Error messages apologetic, non-blaming, solutions-oriented.
+- [ ] Terminology matches Procore glossary (actions, UI terms, field labels); AI-assisted actions use `[Verb] with AI`
+- [ ] Capitalization: Title case for headers and button labels; sentence case for body, tooltips, sub-copy
+- [ ] Oxford comma; no em dashes in UI copy; no colon after headers/field names; no exclamation points; no quotation marks around UI refs
+- [ ] Inclusive and global-friendly: active voice, no slang/jargon/idioms; acronyms spelled out at first use; no banned internal/engineering names (Helix, Overflow menu, Tearsheet, MFE)
+- [ ] Accessibility: alt text for meaningful images; short ARIA labels (1–2 words, no element type); no directional language; visible, descriptive labels and link text
+- [ ] If conversational: brief, one thing at a time, important info at end; 1–3 messages before response; error handling and clear closure

@@ -1,0 +1,69 @@
+---
+description: Token translation. REFERENCE.md uses Tailwind class names; this scaffold uses @procore/core-react styled-components tokens. This rule is the translation table.
+globs: src/**/*.{tsx,ts}
+alwaysApply: false
+implementationStatus: supported
+ownerPackage: core-react
+---
+
+# IX Tokens — Tailwind to core-react translation
+
+REFERENCE.md's token tables use Tailwind class names (e.g. `bg-background-primary`, `bg-asphalt-100`). This scaffold uses `@procore/core-react` styled-components with the `colors` and `spacing` exports. This rule is the **conceptual** mapping. Do NOT copy Tailwind class names into scaffold code.
+
+Source of truth for available tokens: `import { colors, spacing } from '@procore/core-react'`.
+
+## Background (semantic roles)
+
+| REFERENCE.md (Tailwind) concept | Use case | core-react equivalent |
+| --- | --- | --- |
+| `bg-background-primary` | Main surface, cards, panels, headers | `colors.white` |
+| `bg-background-secondary` | Subtle fills, toolbar row | `colors.gray96` |
+| `bg-background-tertiary` | Selected state on table rows | Table package's selected row state |
+| `bg-background-disabled` | Disabled input fields | core-react input `disabled` state |
+| `bg-asphalt-100` | Active (clicked) row | Table package's active row state |
+| `bg-asphalt-900` | Sidebar (dark) | App shell dark surface (currently styled-component-defined) |
+
+## Text
+
+| REFERENCE.md concept | Use case | core-react equivalent |
+| --- | --- | --- |
+| `text-foreground-primary` | Body text, primary values | `colors.gray10` |
+| `text-foreground-secondary` | Labels, helper text | `colors.gray45` |
+| `text-foreground-tertiary` | Timestamps, metadata | `colors.gray60` |
+| `text-foreground-inverse` | Text on dark backgrounds | `colors.white` |
+| `text-danger-600` | Error text, overdue | `colors.red50` |
+| `text-success-800` | Saved / success states | `colors.green50` |
+
+## Border
+
+| REFERENCE.md concept | Use case | core-react equivalent |
+| --- | --- | --- |
+| `border-border-default` | Dividers, card borders | `colors.gray85` |
+| `border-border-hover` | Interactive border hover | `colors.gray45` |
+| `border-border-input-*` | Input field borders | core-react `Input` component |
+| `border-border-inactive` | Locked chips | `colors.gray94` |
+
+## Status
+
+| REFERENCE.md concept | Use case | core-react equivalent |
+| --- | --- | --- |
+| `bg-danger-25 text-danger-600` | Incomplete / error badge | `colors.red90` + `colors.red50` text |
+| `bg-informative-600 text-white` | Active / info badge | `colors.blue40` + `colors.white` text |
+| `text-danger-600` | Overdue due date | `colors.red50` |
+
+## Spacing (REFERENCE.md uses px, scaffold uses `spacing`)
+
+`@procore/core-react` exports `spacing` with numeric px values (`spacing.xs` = 4, `spacing.sm` = 8, `spacing.md` = 16, `spacing.lg` = 24, etc.). Use these rather than literal px when composing styled-components.
+
+## Hard rules
+
+- NEVER use Tailwind class names in scaffold code. If you see `className="bg-background-primary"` in a pasted snippet, translate it to a styled-component using `colors`.
+- NEVER invent new semantic roles. If REFERENCE.md describes a token with no core-react equivalent, flag it in `skills/ds-cheat-sheet/TOOLINATOR-EXTENSIONS.md` as a core-react proposal — do not invent a one-off styled-component color.
+- The "Locked Component Styling" block in REFERENCE.md is **out of scope**. Those values are from a different stack.
+
+## Related
+
+- Pattern and z-index decisions: `ix-patterns.mdc`.
+- REFERENCE.md tables themselves are annotated with `Status: Scaffold` pointing back at this rule.
+
+Full rules: `skills/ds-cheat-sheet/REFERENCE.md`.

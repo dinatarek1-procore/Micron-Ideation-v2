@@ -1,0 +1,39 @@
+{
+  "edit": {
+    "type": "object",
+    "properties": {
+      "summary": { "type": "string", "title": "Title" },
+      "description": { "type": "string", "title": "Description" },
+      "status": {
+        "type": "string",
+        "title": "Status",
+        "enum": ["Open", "In Progress", "Closed"]
+      },
+      "priority": {
+        "type": "string",
+        "title": "Priority",
+        "enum": ["Low", "Medium", "High", "Critical"]
+      },
+      "assignee": { "type": "string", "title": "Assigned To" },
+      "dueDate": { "type": "string", "format": "date", "title": "Due Date" },
+      "cost": { "type": "number", "title": "Cost" },
+      "notes": { "type": "string", "title": "Notes" }
+    }
+  },
+  "detail": {
+    "type": "object",
+    "properties": {
+      "id": { "type": "integer", "title": "ID", "readOnly": true },
+      "referenceCode": {
+        "type": "string",
+        "title": "Reference Code",
+        "readOnly": true
+      },
+      "summary": { "type": "string", "title": "Title" },
+      "description": { "type": "string", "title": "Description" },
+      "status": { "type": "string", "title": "Status" },
+      "assignee": { "type": "string", "title": "Owner" },
+      "dueDate": { "type": "string", "format": "date", "title": "Due Date" }
+    }
+  }
+}

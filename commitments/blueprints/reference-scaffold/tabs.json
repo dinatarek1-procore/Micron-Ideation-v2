@@ -1,0 +1,19 @@
+[
+  { "title": "Overview", "view": "detail", "titleKey": "tool.tabs.overview" },
+  { "title": "Emails", "view": "itemEmails", "titleKey": "tool.tabs.emails" },
+  {
+    "title": "Related items",
+    "view": "itemRelatedItems",
+    "titleKey": "tool.tabs.relatedItems"
+  },
+  {
+    "title": "Documents",
+    "view": "itemDocuments",
+    "titleKey": "tool.tabs.documents"
+  },
+  {
+    "title": "Change history",
+    "view": "itemHistory",
+    "titleKey": "tool.tabs.history"
+  }
+]

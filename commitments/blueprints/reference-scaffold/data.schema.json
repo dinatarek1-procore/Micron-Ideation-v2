@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "properties": {
+    "id": { "type": "number" },
+    "title": { "type": "string" },
+    "reference_code": { "type": "string" },
+    "status": { "type": "string" },
+    "priority": { "type": "string" },
+    "category": { "type": "string" },
+    "assignee": { "type": "string" },
+    "start_date": { "type": "string", "format": "date" },
+    "due_date": { "type": "string", "format": "date" },
+    "description": { "type": "string" },
+    "internal_notes": { "type": "string" }
+  }
+}

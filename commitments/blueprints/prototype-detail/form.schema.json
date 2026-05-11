@@ -1,0 +1,107 @@
+{
+  "edit": {
+    "type": "object",
+    "properties": {
+      "summary": { "type": "string", "title": "Title" },
+      "description": { "type": "string", "title": "Description" },
+      "status": {
+        "type": "string",
+        "title": "Status",
+        "enum": ["Open", "In Progress", "Closed"]
+      },
+      "manager": { "type": "string", "title": "Manager" },
+      "receivedFrom": { "type": "string", "title": "Received From" },
+      "assignees": {
+        "type": "array",
+        "items": { "type": "string" },
+        "title": "Assignees"
+      },
+      "distributionList": {
+        "type": "array",
+        "items": { "type": "string" },
+        "title": "Distribution List"
+      },
+      "ballInCourt": { "type": "string", "title": "Ball In Court" },
+      "contractor": { "type": "string", "title": "Responsible Contractor" },
+      "specSection": { "type": "string", "title": "Spec Section" },
+      "location": { "type": "string", "title": "Location" },
+      "subJob": { "type": "string", "title": "Sub Job" },
+      "dueDate": { "type": "string", "format": "date", "title": "Due Date" },
+      "dateInitiated": {
+        "type": "string",
+        "format": "date",
+        "title": "Date Initiated"
+      },
+      "costCode": { "type": "string", "title": "Cost Code" },
+      "scheduleImpact": {
+        "type": "string",
+        "title": "Schedule Impact",
+        "enum": ["Yes — TBD", "Yes — Known", "No", "N/A"]
+      },
+      "costImpact": {
+        "type": "string",
+        "title": "Cost Impact",
+        "enum": ["Yes — TBD", "Yes — Known", "No", "N/A"]
+      },
+      "reference": { "type": "string", "title": "Reference" },
+      "privateChecked": { "type": "boolean", "title": "Private" }
+    }
+  },
+  "detail": {
+    "type": "object",
+    "properties": {
+      "id": { "type": "integer", "title": "ID", "readOnly": true },
+      "number": { "type": "string", "title": "Number", "readOnly": true },
+      "referenceCode": {
+        "type": "string",
+        "title": "Reference Code",
+        "readOnly": true
+      },
+      "summary": { "type": "string", "title": "Title" },
+      "description": { "type": "string", "title": "Description" },
+      "status": { "type": "string", "title": "Status" },
+      "manager": { "type": "string", "title": "Manager" },
+      "receivedFrom": { "type": "string", "title": "Received From" },
+      "assignees": {
+        "type": "array",
+        "items": { "type": "string" },
+        "title": "Assignees"
+      },
+      "distributionList": {
+        "type": "array",
+        "items": { "type": "string" },
+        "title": "Distribution List"
+      },
+      "ballInCourt": { "type": "string", "title": "Ball In Court" },
+      "contractor": { "type": "string", "title": "Responsible Contractor" },
+      "specSection": { "type": "string", "title": "Spec Section" },
+      "location": { "type": "string", "title": "Location" },
+      "createdBy": {
+        "type": "string",
+        "title": "Created By",
+        "readOnly": true
+      },
+      "subJob": { "type": "string", "title": "Sub Job" },
+      "dueDate": { "type": "string", "format": "date", "title": "Due Date" },
+      "dateInitiated": {
+        "type": "string",
+        "format": "date",
+        "title": "Date Initiated"
+      },
+      "costCode": { "type": "string", "title": "Cost Code" },
+      "scheduleImpact": { "type": "string", "title": "Schedule Impact" },
+      "costImpact": { "type": "string", "title": "Cost Impact" },
+      "reference": { "type": "string", "title": "Reference" },
+      "privateChecked": { "type": "boolean", "title": "Private" },
+      "recordedOn": {
+        "type": "string",
+        "format": "date",
+        "title": "Recorded On"
+      },
+      "responsibleOrg": {
+        "type": "string",
+        "title": "Responsible Organization"
+      }
+    }
+  }
+}

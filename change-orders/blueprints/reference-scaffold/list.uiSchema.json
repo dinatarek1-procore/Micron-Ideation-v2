@@ -1,0 +1,49 @@
+{
+  "id": {
+    "ui:options": {
+      "cell": null
+    }
+  },
+  "title": {
+    "ui:options": {
+      "title": "Title",
+      "flex": 2,
+      "cell": "@TitleCellRenderer"
+    }
+  },
+  "status": {
+    "ui:options": {
+      "title": "Status"
+    }
+  },
+  "priority": {
+    "ui:options": {
+      "title": "Priority"
+    }
+  },
+  "assignee": {
+    "ui:options": {
+      "title": "Assignee"
+    }
+  },
+  "category": {
+    "ui:options": {
+      "title": "Category"
+    }
+  },
+  "due_date": {
+    "ui:options": {
+      "title": "Due date"
+    }
+  },
+  "description": {
+    "ui:options": {
+      "cell": null
+    }
+  },
+  "ui:options": {
+    "pagination": {
+      "pageSize": 20
+    }
+  }
+}

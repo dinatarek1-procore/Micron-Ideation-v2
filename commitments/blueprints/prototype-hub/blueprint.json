@@ -1,0 +1,7 @@
+{
+  "name": "prototype-hub",
+  "version": "0.0.1",
+  "toolName": "prototypeApp",
+  "basePath": "/companies/$companyId/tools/prototype",
+  "views": ["hub"]
+}

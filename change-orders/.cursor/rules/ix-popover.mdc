@@ -1,0 +1,57 @@
+---
+description: IX Popover rules. Always compose via IxQuickPopover, never raw @procore/core-react Popover (which hardcodes arrow=true). Quick, non-destructive inline actions only.
+globs: src/**/*.tsx
+alwaysApply: false
+implementationStatus: scaffold-only
+ownerPackage: prototype-template
+---
+
+# IX Popover rules
+
+Popovers live at z-20 with no scrim. They are for **quick, non-destructive** inline actions.
+
+## Use `IxQuickPopover`, not raw `Popover`
+
+`@procore/core-react` `Popover` hardcodes `arrow: true` — the arrow/tail is non-IX-compliant for our toolbar patterns. Compose via:
+
+- `IxQuickPopover` — `src/components/templates/ix-popover/IxQuickPopover.tsx` (wraps `OverlayTrigger` + `Popover.Content` with `arrow={false}`).
+- `IxPopoverTriggerButton` — consistent secondary-button trigger.
+- `ConfigurationPopoverContent` — toggle-list body used for Filter / Configure toolbar patterns.
+- **`FormulatorFilterPopoverContent`** — richer filter bodies built with `@procore/json-formulator` (`Form` + Clear All / Apply). Use with `FilterToolbarPopoverButton` and popover **`width` ~360px** for readable field layout.
+- **`ColumnConfigurePopoverContent`** — column visibility, pragmatic-drag-and-drop reorder, and row density; use with `ConfigureToolbarPopoverButton` and **`width` ~320px**.
+
+Keep the **AG Grid sidebar** (filters / columns panels) available for power users when you ship Smart Grid filter/configure popovers.
+
+Canonical examples in this scaffold:
+
+- [`popovers/PopoverComponentFilter.tsx`](src/components/templates/popovers/PopoverComponentFilter.tsx) — "Filter" toolbar button that opens a checklist.
+- [`popovers/PopoverComponentConfigure.tsx`](src/components/templates/popovers/PopoverComponentConfigure.tsx) — "Configure" toolbar button with the same pattern.
+
+A long-term core-react proposal (`Popover` accepts `arrow?: boolean`) is filed in `TOOLINATOR-EXTENSIONS.md`.
+
+## Hard rules
+
+- NEVER use for **destructive** actions (delete, void, approve-with-impact). Use a `Modal` (z-50).
+- NEVER contain **form-level Save** (whole-form commit). Popovers are single-field or single-toggle commits at most.
+- NEVER trigger from a **link** — only from a button or pressable.
+- NEVER place **inside a Modal** as the trigger context.
+- NEVER **nest** popovers. Avoid complex editors (rich text) inside.
+
+## Size and content
+
+- Content must be **scannable** — 2–3 scrolls of content at most.
+- **Max size: 50%** of the region the trigger lives in. Use `portalContainer` on `IxQuickPopover` set to that region for true "50% of region" sizing.
+- **Single-column** only. No tabs or sub-navigation.
+- Must be completable in **seconds**.
+
+## Vibe check
+
+If the user loses meaningful work by accidentally clicking the background, it should NOT be a popover. Use a Slide-Out (Tearsheet) instead.
+
+## Related
+
+- Decision tree: `ix-patterns.mdc`.
+- Table toolbar wrappers use `IxQuickPopover` — see the Filter / Configure patterns above.
+- For destructive confirmation: `ix-destructive.mdc`.
+
+Full rules: `skills/ds-cheat-sheet/REFERENCE.md`.

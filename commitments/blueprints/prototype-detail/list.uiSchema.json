@@ -1,0 +1,9 @@
+{
+  "ui:options": {
+    "referenceCode": { "title": "ID", "flex": 1 },
+    "summary": { "title": "Title", "flex": 3 },
+    "status": { "title": "State", "flex": 1, "cellRenderer": "pill" },
+    "assignee": { "title": "Owner", "flex": 1 },
+    "dueDate": { "title": "Due", "flex": 1 }
+  }
+}

@@ -1,0 +1,49 @@
+---
+description: IX interaction-pattern decision tree for Procore prototypes (Split-View, Slide-Out, Full-Workspace, Context-Shift, Popover, Modal). Covers z-index layering and view-type-to-pattern mapping.
+globs: src/**/*.tsx
+alwaysApply: false
+implementationStatus: supported
+ownerPackage: core-react
+---
+
+# IX Interaction Pattern Decision Tree
+
+Use this rule when picking which pattern to use for a new view or interaction. The pattern determines which `@procore/core-react` primitive and which scaffold template to reach for.
+
+## Decision tree
+
+- Creating a **new record** → **Pattern 3 Slide-Out** (`@procore/core-react` `Tearsheet`, scaffold Tearsheet template at 37%/63% width, z-30, right-to-left). Save/Cancel is the current scaffold default; server-side autosave is a `toolinator-proposal` (see `TOOLINATOR-EXTENSIONS.md`).
+- Reviewing / editing **an existing record alongside a list** → **Pattern 1 Split-View** (`SplitViewCard` primitives via the `SplitViewShell` template; 37% list left, 63% detail right).
+- Viewing complex info that **needs full width** → **Pattern 2 Full-Workspace** (`ToolLandingPage` / `DetailPage` / `SettingsPage` layouts via Toolinator).
+- **Detail + supplemental context** (comments, activity) → **Pattern 4 Context-Shift** (detail 63% left, context panel 37% right). Context panel (Zone 3) primitive is a `core-react-proposal`.
+- Small, quick, non-destructive inline action → **Popover** via `IxQuickPopover` (never raw `Popover`).
+- **Destructive or critical confirmation** → **Modal** via `@procore/core-react` `Modal` (Tier 2). Tier 3 (typed confirmation + cascade) is a `core-react-proposal`.
+
+## Z-index canonical stack (enforced by `@procore/core-react`)
+
+- `z-80` Unified Viewer — out of scope in this scaffold.
+- `z-50` Modal — destructive confirmations; scrim `bg-black/50 fixed inset-0`.
+- `z-30` Slide-Out (Tearsheet) — create / filter workflows; scrim `bg-white/30 absolute` inside workspace container only.
+- `z-20` Popover — quick contextual interactions; NO scrim.
+- `z-10` Tooltip — read-only hover info; NO scrim.
+- `z-0` Shell — always present.
+
+Do NOT set custom `zIndex` values. Use the primitives — they encode the stack.
+
+## View-type to layout mapping
+
+- **Home / Tool landing** → `toolLandingPage` Toolinator layout.
+- **Detail** → `detailPage` Toolinator layout.
+- **Settings** → `settingsPage` Toolinator layout.
+- **Anchor view (list + detail)** → `SplitViewShell` template inside a `toolLandingPage` layout (Pattern 1 as a first-class `splitViewPage` layout is a `toolinator-proposal`).
+
+## Related rules
+
+- Detailed widths and footer rules: `ix-tearsheet.mdc`.
+- Title-bar actions, parent actions vs. overflow: `ix-actions.mdc`.
+- Popover specifics and prohibited use cases: `ix-popover.mdc`.
+- Split-View composition: `ix-split-view.mdc`.
+- Destructive action tiers: `ix-destructive.mdc`.
+- Token translations: `ix-tokens.mdc`.
+
+Full rules: `skills/ds-cheat-sheet/REFERENCE.md`.

@@ -1,0 +1,39 @@
+{
+  "skills": [
+    {
+      "id": "procore-content-design",
+      "title": "Procore content design",
+      "description": "Apply Procore content design and UX writing standards when creating or reviewing user-facing copy, UI text, conversational AI, or designs."
+    },
+    {
+      "id": "json-toolinator-extensions",
+      "title": "JSON Toolinator extensions",
+      "description": "Extend Toolinator views with createConfig, createView, formulator, tabulator, and smart-grid patterns."
+    },
+    {
+      "id": "scaffold-blueprint",
+      "title": "Scaffold blueprint",
+      "description": "Author a new blueprint directory with the seven JSON files that match bundled examples."
+    },
+    {
+      "id": "prepare-contribution",
+      "title": "Prepare contribution",
+      "description": "Hand off prototype or blueprint work with a checklist and optional failure report."
+    },
+    {
+      "id": "load-blueprint",
+      "title": "Load blueprint",
+      "description": "Hydrate or replace blueprint JSON under blueprints/ using the bundled pull flow."
+    },
+    {
+      "id": "build-storybook",
+      "title": "Build Storybook",
+      "description": "Iterate on Storybook stories for prototype views using yarn scripts."
+    },
+    {
+      "id": "build-full-demo",
+      "title": "Build full demo",
+      "description": "Post-install sequence for the complete Toolinator prototype demo (registry, install, validate)."
+    }
+  ]
+}

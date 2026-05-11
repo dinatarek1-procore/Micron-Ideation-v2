@@ -1,0 +1,54 @@
+---
+description: IX Slide-Out (Tearsheet) rules — widths, slide direction, footer rules, and when to use each Slide-Out type (Data Entry, File Management, Contextual View, System Config).
+globs: src/**/*.tsx
+alwaysApply: false
+implementationStatus: scaffold-only
+ownerPackage: core-react
+---
+
+# IX Slide-Out (Tearsheet) rules
+
+Use `@procore/core-react` `Tearsheet` + `Panel` for all IX slide-outs. Never build a custom slide-out chrome.
+
+## Width (scaffold rule, supersedes legacy `w-[480px]`)
+
+- **Default: 37% of the workspace** — for Quick Create, filter panels, and most contextual views.
+- **63%** — use when content density requires it (Tier 3+ forms with many fields, multi-section content).
+- **Slide direction: right-to-left** — the tearsheet enters from the right edge.
+
+Implement via a styled wrapper around `Tearsheet` contents (`width: 37vw; min-width: 320px;` with an opt-in 63% variant). Do NOT pick arbitrary widths.
+
+## Footer rules by Slide-Out type
+
+| Type | Example | Footer in scaffold |
+| --- | --- | --- |
+| Data Entry | Create RFI, Create Submittal | **Autosave indicator** — no Save / Cancel. Wire with `useDebouncedAutosave` + `<TearsheetAutosaveIndicator>` as the `footer`. |
+| File Management | Attach documents | **Autosave indicator** |
+| Contextual View | Filter Panel, View Details | **Apply / Cancel** (deliberate commit) |
+| System Config | Notification preferences | **Apply / Cancel** |
+
+This satisfies REFERENCE.md's "Data Entry → NO Save/Cancel — autosave only" rule directly in the scaffold today.
+
+- Use [`useDebouncedAutosave`](src/shared/useDebouncedAutosave.ts) from `@/shared/useDebouncedAutosave` with Formulator's `<Form>` `onChange`. Pair with [`TearsheetAutosaveIndicator`](src/components/templates/tearsheet/TearsheetAutosaveIndicator.tsx) as the `TearsheetShell` `footer` prop.
+- Pass `localStorageKey` to the `<Form>` as well — Formulator's client-side store gives refresh recovery on top of the debounced server save.
+- Close behavior: call `autosave.flush()` in `onClose` before navigating so the final in-flight edit is persisted.
+
+For Toolinator-wired Creates (views that use `feature: 'form'` in config rather than a custom view component), the equivalent wiring requires a Toolinator extension (`onChangeDebounced` on `FormFeature`) tracked as a `toolinator-proposal` in [`TOOLINATOR-EXTENSIONS.md`](skills/ds-cheat-sheet/TOOLINATOR-EXTENSIONS.md).
+
+## Do / Do not
+
+- DO: compose `TearsheetShell` (which wraps `Tearsheet` + `Panel` + optional `Panel.Footer`) from `@/components/templates/tearsheet`.
+- DO: for data-entry slide-outs, wire `useDebouncedAutosave` to Formulator's `onChange` and render `TearsheetAutosaveIndicator` as the `footer`.
+- DO: apply `localStorageKey` to any `<Form>` from `@procore/json-formulator` inside a tearsheet — complements server autosave with client-side refresh recovery.
+- DO: use `Button variant="primary"` for the commit action on **contextual-view** tearsheets (Apply / Cancel). Data-entry tearsheets should not have a Save button.
+- DO NOT: set custom `zIndex` (Tearsheet is z-30 by design).
+- DO NOT: place destructive confirmations inside a Tearsheet — use a `Modal` (z-50).
+- DO NOT: add a Save button to a data-entry tearsheet when you could autosave instead.
+
+## Related
+
+- Decision tree: `ix-patterns.mdc`.
+- Form zone composition inside a tearsheet: `ix-form-zones.mdc`.
+- Popover (not a slide-out): `ix-popover.mdc`.
+
+Full rules: `skills/ds-cheat-sheet/REFERENCE.md`.

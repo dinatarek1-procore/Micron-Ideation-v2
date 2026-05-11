@@ -1,0 +1,6 @@
+[
+  { "title": "General", "view": "detail" },
+  { "title": "Related Items", "view": "itemRelatedItems" },
+  { "title": "Emails", "view": "itemEmails" },
+  { "title": "Change History", "view": "itemHistory" }
+]

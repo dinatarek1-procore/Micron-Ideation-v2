@@ -1,0 +1,41 @@
+---
+description: IX Pattern 1 (Split-View) composition rules. Use SplitViewShell + SplitViewCard + a Tabulator or Smart Grid table as the list — never handcraft a table.
+globs: src/**/*.tsx
+alwaysApply: false
+implementationStatus: scaffold-only
+ownerPackage: prototype-template
+---
+
+# IX Split-View (Pattern 1) rules
+
+Used for anchor views: a list on the left, a detail pane on the right that opens when a row is clicked.
+
+## Composition
+
+Compose via:
+
+- `SplitViewShell` — scaffold template at `src/components/templates/split-view/SplitViewShell.tsx` (wraps `SplitViewCard` + `SplitViewCard.Main` + `SplitViewCard.Panel`).
+- **List (left pane)** — a `@procore/json-tabulator` or `@procore/smart-grid` table. Do NOT handcraft an HTML `<table>` or a styled `Table` from `@procore/core-react`.
+- **Detail (right pane)** — a read-only or edit view that renders when the shell's `selected` state is non-null.
+
+A first-class `splitViewPage` Toolinator layout that takes two `feature` slots is a `toolinator-proposal` (see `TOOLINATOR-EXTENSIONS.md`).
+
+## Layout
+
+- **37% list / 63% detail** — provided by `SplitViewCard`.
+- List renders above a **toolbar chrome** owned by Tabulator / Smart Grid (search, filter chip row, quick filters). Do NOT build parallel toolbar controls — use the table package's built-in chrome or compose the Filter / Configure `IxQuickPopover` patterns.
+- **Active row** state is owned by the table package. Consumers should never custom-style row backgrounds beyond what the table package exposes.
+
+## Panel behavior
+
+- `SplitViewCard.Panel` shows only when a row is selected; otherwise the list spans full width.
+- Panel is tabbed for Details vs Activity when applicable.
+- Panel footer renders only when a record is selected and there is an actionable command.
+
+## Related
+
+- Decision tree and z-index: `ix-patterns.mdc`.
+- Tables: use `@procore/json-tabulator` or `@procore/smart-grid` — their package-level rules apply.
+- Do NOT port `ToolSplitViewTable.tsx` / `ToolTableControls.tsx` from the IX Model Test reference project; those handcraft what Tabulator / Smart Grid already provide.
+
+Full rules: `skills/ds-cheat-sheet/REFERENCE.md`.

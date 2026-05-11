@@ -1,0 +1,18 @@
+/**
+ * Smart Grid scopes many rules under #_smart_*; AG Grid also portals menus/popups to `body`.
+ * Per-icon classes (e.g. `.ag-icon-small-down`) use `var(--ag-icon-font-family-small-down, var(--ag-icon-font-family))`.
+ * A :root default covers any subtree that does not sit under `[class*='ag-theme-']`.
+ */
+:root {
+  --ag-icon-font-family: agGridAlpine;
+}
+
+[class*='ag-theme-'],
+.ag-popup {
+  --ag-icon-font-family: agGridAlpine;
+}
+
+[class*='ag-theme-'] .ag-icon,
+.ag-popup .ag-icon {
+  font-family: agGridAlpine, 'agGridAlpine', sans-serif !important;
+}

@@ -1,0 +1,52 @@
+{
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "location": { "type": "string" },
+        "stage": { "type": "string" },
+        "type": { "type": "string" },
+        "startDate": { "type": "string", "format": "date" }
+      }
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": { "type": "string" },
+          "url": { "type": "string" }
+        }
+      }
+    },
+    "openItems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "type": { "type": "string" },
+          "title": { "type": "string" },
+          "due": { "type": "string" },
+          "status": { "type": "string" },
+          "assignee": { "type": "string" }
+        }
+      }
+    },
+    "analytics": {
+      "type": "object",
+      "properties": {
+        "rfis": { "type": "object" },
+        "submittals": { "type": "object" }
+      }
+    },
+    "safety": {
+      "type": "object",
+      "properties": {
+        "content": { "type": "string" }
+      }
+    }
+  }
+}

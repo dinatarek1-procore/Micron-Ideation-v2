@@ -1,0 +1,81 @@
+---
+description: IX rules for Toolinator title-bar actions. When a parent action (children) is legitimate vs. when it is a fake-kebab anti-pattern; how Toolinator's automatic overflow works.
+globs: src/**/*.{ts,tsx}
+alwaysApply: false
+implementationStatus: supported
+ownerPackage: json-toolinator
+---
+
+# IX Title Actions — parent actions vs. overflow
+
+Toolinator's title-actions template already handles overflow for you: the first three actions render inline and the rest collapse into a `DropdownFlyout` with a caret. You do **not** need to build the overflow yourself.
+
+## Legitimate use of a parent action (grouped sub-actions)
+
+Use `{ title, children: [...] }` only when the sub-actions are **semantically a single grouped action** that a user naturally thinks of as one control:
+
+- `Export → PDF / CSV / Excel`
+- `Download → PDF / original / zipped`
+- `Share → Copy link / Email / Slack`
+
+Each of these has a named parent verb that groups variants. The parent action title is the verb (`Export`, `Download`, `Share`) and renders as a button with a caret beside it — the caret is correct because the user picks which variant to run.
+
+## Anti-pattern — do NOT use a parent action as a fake kebab menu
+
+**Never** do this:
+
+```tsx
+// WRONG — fake kebab menu
+{
+  title: ' ',                    // blank or whitespace title
+  icon: <EllipsisVertical />,    // "more" icon
+  children: [
+    { title: 'Project Hub', view: 'hub' },
+    { title: 'Home', view: 'home' },
+    { title: 'New tool', view: 'list' },
+  ],
+}
+```
+
+Two things go wrong with this pattern:
+
+1. **`@procore/core-react` treats any defined `label` (including `''`) as "show caret"** — so the kebab renders with a stray caret beside the ellipsis icon. That bug was fixed on `feat/core-title-overflow-tool-landing` (branch trim to label-only `Dropdown` fix) but the pattern itself still produces an IX-non-compliant trigger.
+2. **It reinvents Toolinator's built-in overflow.** Consumers should not manage which actions go inline vs. which go to the overflow — Toolinator owns that decision.
+
+### Fix: flatten the children into top-level actions
+
+```tsx
+// RIGHT — let Toolinator handle overflow
+actions: [
+  { title: 'Action [Item name]', variant: 'primary' },
+  { title: 'Edit' },
+  { title: 'Export', children: [{ title: 'CSV' }, { title: 'PDF' }] }, // legitimate parent
+  { title: 'Project Hub', view: 'hub' },
+  { title: 'Home', view: 'home' },
+  { title: 'New tool', view: 'list' },
+]
+```
+
+With 6 actions, Toolinator renders the first 3 inline (`Action`, `Edit`, `Export`) and collapses the remaining 3 (`Project Hub`, `Home`, `New tool`) into the overflow flyout automatically.
+
+## Overflow threshold
+
+The threshold is hardcoded at 3 today. Configurable per layout (`titleActionsVisibleMax`) is a **Toolinator proposal** — see [`TOOLINATOR-EXTENSIONS.md`](../../skills/ds-cheat-sheet/TOOLINATOR-EXTENSIONS.md). Until it lands, do not try to work around the 3 by injecting a custom kebab parent action — rely on the built-in overflow.
+
+## Quick checklist
+
+- Is the parent action a **verb that groups variants** (`Export`, `Download`, `Share`)? → `children` is legitimate.
+- Is the parent action an **ellipsis icon with a blank / whitespace title**? → Anti-pattern. Flatten the children into top-level actions.
+- Is the children list a set of **unrelated destinations or commands**? → Flatten. These should be separate top-level actions and let Toolinator overflow them.
+
+## Scope
+
+This rule applies to **Toolinator action configs** (`layout.actions`, feature `actions`). It does NOT apply to raw `@procore/core-react` `Button`, `Dropdown`, or `IxQuickPopover` composition inside custom UI — those are separate primitives with their own IX rules (see `ix-popover.mdc`).
+
+## Related
+
+- Decision tree: `ix-patterns.mdc`.
+- Popover patterns (when kebab-style interactions are really a Filter or Configure menu): `ix-popover.mdc`.
+- Overflow threshold extension: `../../skills/ds-cheat-sheet/TOOLINATOR-EXTENSIONS.md`.
+
+Full rules: `skills/ds-cheat-sheet/REFERENCE.md`.

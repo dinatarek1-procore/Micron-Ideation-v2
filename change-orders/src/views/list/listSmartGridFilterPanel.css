@@ -1,0 +1,104 @@
+/**
+ * Smart Grid filter tool panel: the width is governed by `smartGridAgTheme.sideBarPanelWidth`;
+ * these rules only tighten spacing inside so Procore controls read cleanly.
+ */
+.prototype-list-smart-grid-shell .ag-filter-toolpanel-header,
+.prototype-tool-landing-generic-smart-grid-shell .ag-filter-toolpanel-header {
+  padding: 12px 14px;
+}
+
+.prototype-list-smart-grid-shell .ag-filter-body-wrapper,
+.prototype-tool-landing-generic-smart-grid-shell .ag-filter-body-wrapper {
+  padding: 4px 12px 12px;
+}
+
+.prototype-list-smart-grid-shell .ag-filter-body .ag-filter-filter,
+.prototype-tool-landing-generic-smart-grid-shell
+  .ag-filter-body
+  .ag-filter-filter {
+  margin-bottom: 14px;
+}
+
+.prototype-list-smart-grid-shell .ag-filter-body .ag-react-container,
+.prototype-tool-landing-generic-smart-grid-shell
+  .ag-filter-body
+  .ag-react-container {
+  min-height: 40px;
+  width: 100%;
+}
+
+.prototype-list-smart-grid-shell .ag-filter-body .ag-react-container > *,
+.prototype-tool-landing-generic-smart-grid-shell
+  .ag-filter-body
+  .ag-react-container
+  > * {
+  max-width: 100%;
+}
+
+/** Let the Smart Grid root fill the host so the AG Grid viewport is not squeezed in nested flex layouts. */
+.prototype-list-smart-grid-shell .table-container,
+.prototype-tool-landing-generic-smart-grid-shell .table-container {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+}
+
+/**
+ * Toolbar: first row = search + Filters button + right actions; second row =
+ * prototype State / Owner selects (full width), then filter tokens + grid.
+ * Smart Grid nests custom left groups inside a Flex grow wrapper — `min-width: 100%`
+ * forces a line break under the search row (flex-basis 100% alone is unreliable).
+ */
+#prototype-tool-new-smart-grid.table-container
+  > div:first-child
+  > div:first-child,
+#prototype-tool-landing-generic-smart-grid.table-container
+  > div:first-child
+  > div:first-child,
+#prototype-tool-landing-generic-smart-grid-recycle.table-container
+  > div:first-child
+  > div:first-child {
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 10px;
+  column-gap: 8px;
+}
+
+#prototype-tool-new-smart-grid.table-container
+  > div:first-child
+  > div:first-child
+  > div:has([data-prototype-quick-filters-wrap]),
+#prototype-tool-landing-generic-smart-grid.table-container
+  > div:first-child
+  > div:first-child
+  > div:has([data-prototype-quick-filters-wrap]),
+#prototype-tool-landing-generic-smart-grid-recycle.table-container
+  > div:first-child
+  > div:first-child
+  > div:has([data-prototype-quick-filters-wrap]) {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  width: 100%;
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+#prototype-tool-new-smart-grid.table-container
+  > div:first-child
+  > div:first-child
+  > div:has([data-prototype-quick-filters-wrap])
+  > div,
+#prototype-tool-landing-generic-smart-grid.table-container
+  > div:first-child
+  > div:first-child
+  > div:has([data-prototype-quick-filters-wrap])
+  > div,
+#prototype-tool-landing-generic-smart-grid-recycle.table-container
+  > div:first-child
+  > div:first-child
+  > div:has([data-prototype-quick-filters-wrap])
+  > div {
+  width: 100%;
+}

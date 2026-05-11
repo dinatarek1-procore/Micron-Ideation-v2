@@ -1,0 +1,58 @@
+---
+description: IX Form Zone architecture. Compose forms via core-react Panel (Zones 1, 2, 4) + Formulator fields; Zone 3 Context Panel is a future core-react primitive.
+globs: src/**/*.tsx
+alwaysApply: false
+implementationStatus: scaffold-only
+ownerPackage: prototype-template
+---
+
+# IX Form Zone Architecture
+
+Forms (especially Create / Edit inside a Tearsheet) follow a four-zone architecture. In this scaffold, use `@procore/core-react` primitives + `@procore/json-formulator` to compose them — do not hand-roll zone chrome.
+
+## Zone 1 — Identity Strip
+
+The top strip: form type label, record number, status badge, overdue indicator.
+
+- Implement with `Panel.Header` + `Panel.Title` (core-react) plus a small summary block above the form body.
+- Tier 3+ forms must have a **sticky** Zone 1. Today this is a manual styling concern on the `Panel.Header` container.
+- Record number must **never truncate**.
+- Status badges should reuse a shared `StatusBadge` concept — avoid one-off badge styles.
+
+## Zone 2 — Primary Content
+
+The form body itself.
+
+- **Single column only** — never two-column form layouts.
+- Use `@procore/json-formulator` `<Form>` with `Form.Text`, `Form.TextArea`, `Form.Select`, `Form.Number`, etc.
+- Always pass `localStorageKey` to `<Form>` so tab refresh does not lose input (see `ix-tearsheet.mdc`).
+- Field order conventions: primary identity fields (status, due date, assignee, amount, description), then secondary (submitter, submitted date, spec section), then tertiary (created-by, system IDs) behind a "Show more" disclosure.
+- Spacing conventions are described in REFERENCE.md; default Formulator spacing is acceptable unless content requires tightening.
+
+## Zone 3 — Context Panel
+
+A 320px collapsible right rail that does NOT require navigation to access (comments, activity, related items).
+
+- **Status: no pre-built scaffold primitive** today. Tracked as a `core-react-proposal` in `skills/ds-cheat-sheet/TOOLINATOR-EXTENSIONS.md` (320px collapsible right rail with bottom-sheet fallback on smaller viewports).
+- Interim: render context in a secondary `SplitViewCard.Panel` or a nested `Tabs` section inside Zone 2, and note in the view's JSDoc that Zone 3 is waiting on the primitive.
+
+## Zone 4 — Action Bar
+
+The footer commit bar.
+
+- Implement with `Panel.Footer` + `Panel.FooterActions` (core-react).
+- **Primary action right-aligned**, secondary/tertiary left-aligned.
+- **Max 2 visible actions** — extras go into an overflow menu via `Dropdown` or `IxQuickPopover`.
+- Role-aware CTAs (Author / Controller / Reviewer) are a product-level concern; the scaffold does not encode them.
+
+## Form Complexity Tiers (Formulator schema authoring)
+
+Forms scale from Tier 1 (3-8 fields, Quick Capture) to Tier 5 (40+ fields, Guided Process / multi-step). Tier 3+ require a sticky Zone 1. Today the scaffold has templates for Tier 1-2 (Quick Create via Tearsheet). Tier 5 Guided Process is not yet templated.
+
+## Related
+
+- Tearsheet that hosts the form: `ix-tearsheet.mdc`.
+- Tokens for visual styling inside zones: `ix-tokens.mdc`.
+- Pattern decision tree: `ix-patterns.mdc`.
+
+Full rules: `skills/ds-cheat-sheet/REFERENCE.md`.

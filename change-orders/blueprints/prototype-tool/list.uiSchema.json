@@ -1,0 +1,14 @@
+{
+  "ui:options": {
+    "referenceCode": { "title": "Reference code", "flex": 1, "sortable": true },
+    "summary": { "title": "Title", "flex": 3, "sortable": true },
+    "divisionCode": { "title": "Group", "flex": 1 },
+    "status": { "title": "State", "flex": 1, "cellRenderer": "pill" },
+    "assignee": { "title": "Owner", "flex": 1 },
+    "dueDate": { "title": "Due", "flex": 1, "sortable": true }
+  },
+  "ui:tableOptions": {
+    "pagination": true,
+    "paginationPageSize": 20
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "edit": {
+    "type": "object",
+    "required": [
+      "title",
+      "status",
+      "priority",
+      "category",
+      "assignee",
+      "start_date",
+      "due_date",
+      "description"
+    ],
+    "properties": {
+      "title": { "type": "string", "title": "Title" },
+      "reference_code": { "type": "string", "title": "Reference code" },
+      "status": {
+        "type": "string",
+        "title": "Status",
+        "enum": ["open", "in_progress", "done"]
+      },
+      "priority": {
+        "type": "string",
+        "title": "Priority",
+        "enum": ["low", "medium", "high"]
+      },
+      "category": { "type": "string", "title": "Category" },
+      "assignee": { "type": "string", "title": "Assignee" },
+      "start_date": {
+        "type": "string",
+        "format": "date",
+        "title": "Start date"
+      },
+      "due_date": { "type": "string", "format": "date", "title": "Due date" },
+      "description": { "type": "string", "title": "Description" },
+      "internal_notes": { "type": "string", "title": "Internal notes" }
+    }
+  },
+  "detail": {
+    "type": "object",
+    "required": [
+      "title",
+      "status",
+      "priority",
+      "category",
+      "assignee",
+      "start_date",
+      "due_date",
+      "description"
+    ],
+    "properties": {
+      "id": { "type": "integer", "title": "ID" },
+      "title": { "type": "string", "title": "Title" },
+      "reference_code": { "type": "string", "title": "Reference code" },
+      "status": {
+        "type": "string",
+        "title": "Status",
+        "enum": ["open", "in_progress", "done"]
+      },
+      "priority": {
+        "type": "string",
+        "title": "Priority",
+        "enum": ["low", "medium", "high"]
+      },
+      "category": { "type": "string", "title": "Category" },
+      "assignee": { "type": "string", "title": "Assignee" },
+      "start_date": {
+        "type": "string",
+        "format": "date",
+        "title": "Start date"
+      },
+      "due_date": { "type": "string", "format": "date", "title": "Due date" },
+      "description": { "type": "string", "title": "Description" },
+      "internal_notes": { "type": "string", "title": "Internal notes" }
+    }
+  }
+}

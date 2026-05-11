@@ -1,0 +1,112 @@
+{
+  "tool": {
+    "document": {
+      "title": "Prototype — %{companyName}"
+    },
+    "actions": {
+      "cancel": "Cancel",
+      "close": "Close",
+      "configureSettings": "Configure settings",
+      "create": "Create item",
+      "edit": "Edit",
+      "save": "Save",
+      "submit": "Submit"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "emails": "Emails",
+      "relatedItems": "Related items",
+      "documents": "Documents",
+      "history": "Change history"
+    },
+    "views": {
+      "list": {
+        "title": "Items",
+        "emptyTitle": "No items yet",
+        "emptyDescription": "Create an item to see it in the table.",
+        "columns": {
+          "title": "Title",
+          "status": "Status",
+          "priority": "Priority",
+          "assignee": "Assignee",
+          "category": "Category",
+          "dueDate": "Due date"
+        }
+      },
+      "detail": {
+        "title": "Item details",
+        "formTitle": "Item"
+      },
+      "itemExtensions": {
+        "bannerTitle": "Prototype tab",
+        "hint": "Swap this placeholder for the %{integrationId} package or remote MFE. Active Toolinator view: %{viewName}."
+      },
+      "itemEmails": {
+        "title": "Emails",
+        "placeholderBody": "Engagement surface mirrors Planroom: communication banner, then threaded-style list from the same REST shape.",
+        "list": {
+          "from": "From %{from}",
+          "to": "To %{to}",
+          "nameWithCompany": "%{name} (%{company})"
+        },
+        "columns": {
+          "subject": "Subject",
+          "recipient": "Recipient",
+          "sentAt": "Sent",
+          "status": "Status"
+        }
+      },
+      "itemRelatedItems": {
+        "title": "Related items",
+        "placeholderBody": "Item tab uses `@procore/related-items` RelatedItems (v2 related_items APIs), not JSON Tabulator + Mirage v1 table.",
+        "relatedItemsPackageHint": "Related items UI from `@procore/related-items`. Mirage stubs v2 endpoints; use staging or wire real services for full behavior.",
+        "columns": {
+          "relatedTool": "Tool",
+          "relatedTitle": "Title",
+          "linkedAt": "Linked",
+          "linkedBy": "Linked by"
+        }
+      },
+      "itemDocuments": {
+        "title": "Documents",
+        "placeholderBody": "Item tab uses `@procore/labs-file-select` ConnectedFileSelect (local + Documents), not Mirage JSON Tabulator.",
+        "connectedFileSelectHint": "Connected file select: local uploads and project Documents (configure document_service / staging per labs-file-select README).",
+        "columns": {
+          "filename": "File",
+          "version": "Version",
+          "uploadedAt": "Uploaded",
+          "uploadedBy": "Uploaded by",
+          "sizeBytes": "Size"
+        }
+      },
+      "itemHistory": {
+        "title": "Change history",
+        "displayToolName": "Prototype item"
+      },
+      "edit": {
+        "title": "Edit item"
+      },
+      "create": {
+        "title": "Create item"
+      },
+      "permissions": {
+        "title": "Permissions",
+        "toolName": "Prototype tool"
+      }
+    }
+  },
+  "relatedItems": {
+    "tasks": {
+      "assignees": "Assignees",
+      "dueDate": "Due date",
+      "category": "Category"
+    }
+  },
+  "views": {
+    "generic": {
+      "errors": {
+        "server_error": "Server error"
+      }
+    }
+  }
+}

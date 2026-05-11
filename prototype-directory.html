@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Micron Ideation — Prototype Directory</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f5f5f5;
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #eb5c2e;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    header svg { flex-shrink: 0; }
+
+    header h1 {
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    header p {
+      color: rgba(255,255,255,0.8);
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 16px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #e5e5e5;
+      overflow: hidden;
+      transition: box-shadow 0.15s ease, transform 0.15s ease;
+      text-decoration: none;
+      display: block;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+
+    .card-stripe {
+      height: 4px;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .card h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: #fafafa;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .card-url {
+      font-size: 11px;
+      color: #aaa;
+      font-family: monospace;
+    }
+
+    .card-cta {
+      font-size: 12px;
+      font-weight: 600;
+      color: #eb5c2e;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #e5e5e5;
+      margin: 32px 0;
+    }
+
+    .context-box {
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 40px;
+    }
+
+    .context-box h3 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1a1a1a;
+    }
+
+    .context-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .context-box li {
+      font-size: 13px;
+      color: #555;
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .context-box li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #eb5c2e;
+      font-weight: 700;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 6px;
+    }
+
+    .note {
+      font-size: 12px;
+      color: #999;
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    /* color themes */
+    .blue .card-stripe  { background: #2B6CB0; }
+    .blue .card-tag     { background: #EBF8FF; color: #2B6CB0; }
+
+    .orange .card-stripe { background: #C05621; }
+    .orange .card-tag    { background: #FFFAF0; color: #C05621; }
+
+    .green .card-stripe  { background: #276749; }
+    .green .card-tag     { background: #F0FFF4; color: #276749; }
+
+    .purple .card-stripe { background: #553C9A; }
+    .purple .card-tag    { background: #FAF5FF; color: #553C9A; }
+  </style>
+</head>
+<body>
+
+<header>
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <rect width="32" height="32" rx="4" fill="white" fill-opacity="0.2"/>
+    <path d="M8 8h6v6H8V8zm10 0h6v6h-6V8zm-10 10h6v6H8v-6zm10 0h6v6h-6v-6z" fill="white"/>
+  </svg>
+  <div>
+    <h1>Micron Ideation — Prototype Directory</h1>
+    <p>Unified SOV &amp; Change Order Line Item Association · May 2026</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Context -->
+  <div class="context-box">
+    <h3>What we're solving</h3>
+    <ul>
+      <li>Micron (owner-customer) can't see all SOV line items — original + change orders — in one place on a contract. Today you have to open an invoice just to see the full picture.</li>
+      <li>Change order lines need to be associated to original contract lines, but today there's no UI for non-ERP customers and no bulk option for large COs.</li>
+      <li>MVP scope: approved COs only, unit quantity, happy path. Key scenario: two lines share the same budget code — how does the user pick the right one?</li>
+    </ul>
+  </div>
+
+  <!-- Commitments prototypes -->
+  <div class="section-label">Commitments tool · localhost:3000</div>
+  <div class="cards">
+
+    <a class="card blue" href="http://localhost:3000/companies/1/tools/prototype/items/1/schedule-of-values" target="_blank">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-tag">Commitments</div>
+        <h2>Unified Schedule of Values</h2>
+        <p>Contract detail view showing original SOV lines with approved change orders nested beneath them. Expand rows to see CO detail. New scope shown separately.</p>
+      </div>
+      <div class="card-footer">
+        <span class="card-url">:3000 → items/1/schedule-of-values</span>
+        <span class="card-cta">Open →</span>
+      </div>
+    </a>
+
+    <a class="card blue" href="http://localhost:3000/companies/1/tools/prototype/items/1/change-orders" target="_blank">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-tag">Commitments</div>
+        <h2>Change Orders Tab</h2>
+        <p>All approved COs listed from the contract's perspective — showing which original line each CO is associated to, or flagged as new scope.</p>
+      </div>
+      <div class="card-footer">
+        <span class="card-url">:3000 → items/1/change-orders</span>
+        <span class="card-cta">Open →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Change Orders prototypes -->
+  <div class="section-label">Change Orders tool · localhost:3001</div>
+  <div class="cards">
+
+    <a class="card orange" href="http://localhost:3001/companies/1/tools/prototype/items/1/schedule-of-values" target="_blank">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-tag">Change Orders</div>
+        <h2>CO Schedule of Values</h2>
+        <p>CO creation view showing CO lines grouped by which original contract line they amend. Unassigned lines highlighted. Toggle between grouped and flat views.</p>
+      </div>
+      <div class="card-footer">
+        <span class="card-url">:3001 → items/1/schedule-of-values</span>
+        <span class="card-cta">Open →</span>
+      </div>
+    </a>
+
+    <a class="card green" href="http://localhost:3001/companies/1/tools/prototype/items/1/line-item-association" target="_blank">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-tag">Post-GA concept</div>
+        <h2>Bulk Line Item Association</h2>
+        <p>Side-by-side comparison of the current GA approach (row-by-row dropdowns) vs. the proposed bulk assign feature — select multiple CO lines, assign all to one contract line. CCMT-6499.</p>
+      </div>
+      <div class="card-footer">
+        <span class="card-url">:3001 → items/1/line-item-association</span>
+        <span class="card-cta">Open →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <p class="note">Both servers must be running locally · commitments on :3000 · change-orders on :3001</p>
+
+</div>
+
+</body>
+</html>

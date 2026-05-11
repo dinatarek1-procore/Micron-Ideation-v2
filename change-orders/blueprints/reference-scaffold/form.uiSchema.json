@@ -1,0 +1,120 @@
+{
+  "edit": {
+    "ui:options": {
+      "core": {
+        "layout": {
+          "sections": [
+            {
+              "heading": "General",
+              "rows": [
+                {
+                  "title": { "colStart": 1, "colWidth": 6 },
+                  "reference_code": { "colStart": 7, "colWidth": 6 }
+                },
+                {
+                  "status": { "colStart": 1, "colWidth": 4 },
+                  "priority": { "colStart": 5, "colWidth": 4 },
+                  "category": { "colStart": 9, "colWidth": 4 }
+                },
+                {
+                  "assignee": { "colStart": 1, "colWidth": 6 },
+                  "start_date": { "colStart": 7, "colWidth": 6 }
+                },
+                {
+                  "due_date": { "colStart": 1, "colWidth": 6 }
+                }
+              ]
+            },
+            {
+              "heading": "Details",
+              "rows": [
+                {
+                  "description": { "colStart": 1 }
+                },
+                {
+                  "internal_notes": { "colStart": 1 }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "description": {
+      "ui:widget": "textarea"
+    },
+    "internal_notes": {
+      "ui:widget": "textarea"
+    },
+    "ui:submitButtonOptions": {
+      "norender": true
+    }
+  },
+  "detail": {
+    "ui:options": {
+      "core": {
+        "layout": {
+          "sections": [
+            {
+              "heading": "Summary",
+              "rows": [
+                {
+                  "title": { "colStart": 1, "colWidth": 8 },
+                  "status": { "colStart": 9, "colWidth": 4 }
+                },
+                {
+                  "reference_code": { "colStart": 1, "colWidth": 6 },
+                  "assignee": { "colStart": 7, "colWidth": 6 }
+                },
+                {
+                  "priority": { "colStart": 1, "colWidth": 6 },
+                  "category": { "colStart": 7, "colWidth": 6 }
+                }
+              ]
+            },
+            {
+              "heading": "Schedule and scope",
+              "rows": [
+                {
+                  "start_date": { "colStart": 1, "colWidth": 6 },
+                  "due_date": { "colStart": 7, "colWidth": 6 }
+                },
+                {
+                  "description": { "colStart": 1 }
+                }
+              ]
+            },
+            {
+              "heading": "Notes",
+              "rows": [
+                {
+                  "internal_notes": { "colStart": 1 }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "id": { "ui:readonly": true },
+    "title": { "ui:readonly": true },
+    "reference_code": { "ui:readonly": true },
+    "status": { "ui:readonly": true },
+    "priority": { "ui:readonly": true },
+    "category": { "ui:readonly": true },
+    "assignee": { "ui:readonly": true },
+    "start_date": { "ui:readonly": true },
+    "due_date": { "ui:readonly": true },
+    "description": {
+      "ui:readonly": true,
+      "ui:widget": "textarea"
+    },
+    "internal_notes": {
+      "ui:readonly": true,
+      "ui:widget": "textarea"
+    },
+    "ui:submitButtonOptions": {
+      "norender": true
+    }
+  }
+}

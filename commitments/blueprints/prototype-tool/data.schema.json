@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "properties": {
+    "id": { "type": "integer" },
+    "referenceCode": { "type": "string", "title": "ID" },
+    "summary": { "type": "string", "title": "Title" },
+    "divisionCode": { "type": "string", "title": "Group" },
+    "status": {
+      "type": "string",
+      "title": "State",
+      "enum": ["Open", "In Progress", "Closed"]
+    },
+    "assignee": { "type": "string", "title": "Owner" },
+    "dueDate": { "type": "string", "format": "date", "title": "Due" },
+    "description": { "type": "string" },
+    "number": { "type": "string" },
+    "manager": { "type": "string" },
+    "receivedFrom": { "type": "string" },
+    "assignees": { "type": "array", "items": { "type": "string" } },
+    "distributionList": { "type": "array", "items": { "type": "string" } },
+    "ballInCourt": { "type": "string" },
+    "contractor": { "type": "string" },
+    "specSection": { "type": "string" },
+    "location": { "type": "string" },
+    "createdBy": { "type": "string" },
+    "subJob": { "type": "string" },
+    "dateInitiated": { "type": "string", "format": "date" },
+    "costCode": { "type": "string" },
+    "scheduleImpact": {
+      "type": "string",
+      "enum": ["Yes — TBD", "Yes — Known", "No", "N/A"]
+    },
+    "costImpact": {
+      "type": "string",
+      "enum": ["Yes — TBD", "Yes — Known", "No", "N/A"]
+    },
+    "reference": { "type": "string" },
+    "privateChecked": { "type": "boolean" },
+    "recordedOn": { "type": "string", "format": "date" },
+    "responsibleOrg": { "type": "string" },
+    "priority": {
+      "type": "string",
+      "enum": ["Low", "Medium", "High", "Critical"]
+    },
+    "cost": { "type": "number" },
+    "notes": { "type": "string" }
+  },
+  "required": ["id", "referenceCode", "summary", "status"]
+}

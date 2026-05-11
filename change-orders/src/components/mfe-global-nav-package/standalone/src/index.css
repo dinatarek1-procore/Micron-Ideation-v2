@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================================
+   Global Header — design tokens + dark-surface interactive rules
+   ============================================================================ */
+
+:root {
+  --color-brand-500: #ff5200;
+  --color-brand-400: #ff7133;
+  --color-border-input-focus: #4c85e6;
+  --border-radius-md: 6px;
+  /* ui-service-shell StyledHeaderContainer + standalone global nav */
+  --legacy-header: #000000;
+  --legacy-picker: #2f3437;
+  --legacy-picker-hover: #464f53;
+  --legacy-tool-menu-bg-company: #232729;
+  --legacy-menu-footer: #e7e7e7;
+  /* Zonal shell — workspace + aligned action bars (see standalone/docs/SHELL_ZONES.md) */
+  --shell-workspace-bg: #f5f5f5;
+  --shell-action-bar-py: 0.75rem;
+  --shell-action-bar-px: 1rem;
+}
+
+.shell-action-bar-padding {
+  padding: var(--shell-action-bar-py) var(--shell-action-bar-px);
+}
+
+.shell-panel-actions-zone {
+  padding: var(--shell-action-bar-py) var(--shell-action-bar-px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    sans-serif;
+  background: #f5f5f5;
+  color: #111827;
+}
+
+/* Host chrome: true black even if a Tailwind build misses bg-legacy-header */
+[data-header='global'] {
+  background-color: var(--legacy-header);
+}
+
+/* =============================================================================
+   Global header dark-surface patch (from legacy-theme.css §22)
+   ============================================================================= */
+/* Icon / ghost controls — not gray picker pills */
+[data-header='global']
+  button:not([data-legacy-picker]):not([data-global-search]) {
+  background: transparent !important;
+  border: none !important;
+  color: #ffffff !important;
+  cursor: pointer;
+}
+[data-header='global']
+  button:not([data-legacy-picker]):not([data-global-search]):hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+[data-header='global']
+  button:not([data-legacy-picker]):not(
+    [data-global-search]
+  )[aria-expanded='true'] {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Legacy picker triggers (StyledPicker) — child spans set label/value colors */
+[data-header='global'] button[data-legacy-picker] {
+  background-color: var(--legacy-picker) !important;
+  border: none !important;
+  cursor: pointer;
+  border-radius: 4px !important;
+}
+[data-header='global'] button[data-legacy-picker]:hover {
+  background-color: var(--legacy-picker-hover) !important;
+}
+[data-header='global'] button[data-legacy-picker][aria-expanded='true'] {
+  background-color: var(--legacy-picker-hover) !important;
+}
+[data-header='global'] button svg.text-asphalt-400,
+[data-header='global'] button span.text-asphalt-400 {
+  color: rgba(255, 255, 255, 0.5) !important;
+  font-weight: 400 !important;
+}
+[data-header='global'] button span.text-white {
+  color: #ffffff !important;
+}
+[data-header='global'] button.header-icon-btn {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+[data-header='global'] button.header-icon-btn:hover {
+  color: #ffffff !important;
+  background-color: var(--legacy-picker-hover) !important;
+}
+[data-header='global'] button.header-icon-btn.header-icon-btn--active {
+  color: var(--color-brand-500) !important;
+}
+[data-header='global'] button.header-icon-btn.header-icon-btn--active svg {
+  color: var(--color-brand-500) !important;
+}
+[data-header='global'] button.header-icon-btn.header-icon-btn--active:hover {
+  color: var(--color-brand-400) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+[data-header='global'] .header-notification-badge {
+  background-color: var(--color-brand-500) !important;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+[data-header='global'] button[data-home-context='company'],
+[data-header='global'] button[data-home-context='project'] {
+  color: #ffffff !important;
+}
+[data-header='global'] .header-divider {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+/* GlobalSearch trigger on true black (#000) — slightly stronger edge than on #17191c */
+[data-header='global'] button[data-global-search],
+[data-header='global'] button[data-global-search]:hover {
+  height: 2rem !important;
+  min-height: 2rem !important;
+  box-sizing: border-box !important;
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
+  background-color: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: var(--border-radius-md) !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+[data-header='global'] button[data-global-search]:hover {
+  background-color: rgba(255, 255, 255, 0.11) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+[data-header='global'] button[data-global-search][aria-expanded='true'] {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+}
+[data-header='global'] button[data-global-search] .global-search-placeholder {
+  color: rgba(255, 255, 255, 0.58) !important;
+}
+
+/* Dropdown panel surface */
+.header-dropdown-panel {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #111827;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
