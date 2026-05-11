@@ -29,7 +29,7 @@ export function ItemDetailGeneral() {
       <ProtoPageHeader
         title={item.contractor || item.summary || item.number}
         subtitle={<>{item.number} · {item.summary}</>}
-        actions={<Button variant="primary" size="sm">Edit contract</Button>}
+        actions={<Button variant="primary">Edit contract</Button>}
         tabs={[
           { label: 'General', active: true, path: '' },
           { label: 'Schedule of Values', path: '/schedule-of-values' },

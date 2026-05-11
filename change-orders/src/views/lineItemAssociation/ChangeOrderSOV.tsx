@@ -222,15 +222,15 @@ export function ChangeOrderSOV() {
             <Table style={{ width: '100%' }}>
               <Table.Header>
                 <Table.HeaderRow>
-                  <Table.HeaderCell snugfit></Table.HeaderCell>
-                  <Table.HeaderCell snugfit>#</Table.HeaderCell>
-                  <Table.HeaderCell>Description</Table.HeaderCell>
-                  <Table.HeaderCell snugfit>Budget code</Table.HeaderCell>
-                  <Table.HeaderCell snugfit>Tax code</Table.HeaderCell>
-                  <Table.HeaderCell snugfit style={{ textAlign: 'right' }}>Qty</Table.HeaderCell>
-                  <Table.HeaderCell snugfit>UOM</Table.HeaderCell>
-                  <Table.HeaderCell snugfit style={{ textAlign: 'right' }}>Amount</Table.HeaderCell>
-                  <Table.HeaderCell>Contract line</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}></Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>#</Table.HeaderCell>
+                  <Table.HeaderCell style={{ whiteSpace: 'nowrap' }}>Description</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Budget code</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Tax code</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>Qty</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>UOM</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>Amount</Table.HeaderCell>
+                  <Table.HeaderCell style={{ whiteSpace: 'nowrap' }}>Contract line</Table.HeaderCell>
                 </Table.HeaderRow>
               </Table.Header>
               <Table.Body>
@@ -295,14 +295,14 @@ export function ChangeOrderSOV() {
             <Table style={{ width: '100%' }}>
               <Table.Header>
                 <Table.HeaderRow>
-                  <Table.HeaderCell snugfit>#</Table.HeaderCell>
-                  <Table.HeaderCell>Description</Table.HeaderCell>
-                  <Table.HeaderCell snugfit>Budget code</Table.HeaderCell>
-                  <Table.HeaderCell snugfit>Tax code</Table.HeaderCell>
-                  <Table.HeaderCell snugfit style={{ textAlign: 'right' }}>Qty</Table.HeaderCell>
-                  <Table.HeaderCell snugfit>UOM</Table.HeaderCell>
-                  <Table.HeaderCell snugfit style={{ textAlign: 'right' }}>Amount</Table.HeaderCell>
-                  <Table.HeaderCell>Associated contract line item</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>#</Table.HeaderCell>
+                  <Table.HeaderCell style={{ whiteSpace: 'nowrap' }}>Description</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Budget code</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Tax code</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>Qty</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>UOM</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>Amount</Table.HeaderCell>
+                  <Table.HeaderCell style={{ whiteSpace: 'nowrap' }}>Associated contract line item</Table.HeaderCell>
                 </Table.HeaderRow>
               </Table.Header>
               <Table.Body>

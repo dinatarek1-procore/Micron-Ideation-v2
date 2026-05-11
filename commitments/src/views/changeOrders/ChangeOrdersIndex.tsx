@@ -71,7 +71,7 @@ export function ChangeOrdersIndex() {
         title={contractData.vendor}
         subtitle={<>{contractData.number} · {contractData.title}</>}
         actions={
-          <Button variant="primary" size="sm" onClick={() => setShowTagModal(true)}>
+          <Button variant="primary" onClick={() => setShowTagModal(true)}>
             Create change order
           </Button>
         }
@@ -101,7 +101,7 @@ export function ChangeOrdersIndex() {
           {/* Sub-section header + Export button */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
             <Typography intent="h3">Commitment Change Orders</Typography>
-            <Button variant="secondary" size="sm">Export CCOs ▾</Button>
+            <Button variant="secondary">Export CCOs ▾</Button>
           </div>
 
           {/* Toolbar */}
@@ -116,7 +116,7 @@ export function ChangeOrdersIndex() {
                 <span style={{ color: colors.gray50, fontSize: 13 }}>🔍</span>
                 <span style={{ fontSize: 13, color: colors.gray70 }}>Search</span>
               </div>
-              <Button variant="secondary" size="sm">Filters</Button>
+              <Button variant="secondary">Filters</Button>
             </div>
 
             {/* Right: group by + configure */}
@@ -130,7 +130,7 @@ export function ChangeOrdersIndex() {
                 <option>Status</option>
                 <option>Budget code</option>
               </select>
-              <Button variant="secondary" size="sm">Configure</Button>
+              <Button variant="secondary">Configure</Button>
             </div>
           </div>
 
@@ -139,16 +139,16 @@ export function ChangeOrdersIndex() {
             <Table style={{ width: '100%' }}>
               <Table.Header>
                 <Table.HeaderRow>
-                  <Table.HeaderCell snugfit>Number</Table.HeaderCell>
-                  <Table.HeaderCell snugfit>Revision</Table.HeaderCell>
-                  <Table.HeaderCell>Title</Table.HeaderCell>
-                  <Table.HeaderCell snugfit>Status</Table.HeaderCell>
-                  <Table.HeaderCell snugfit>Executed</Table.HeaderCell>
-                  <Table.HeaderCell snugfit>Tax Code</Table.HeaderCell>
-                  <Table.HeaderCell snugfit style={{ textAlign: 'right' }}>Amount</Table.HeaderCell>
-                  <Table.HeaderCell snugfit>Date Initiated</Table.HeaderCell>
-                  <Table.HeaderCell snugfit>Due Date</Table.HeaderCell>
-                  <Table.HeaderCell snugfit>Review Date</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Number</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Revision</Table.HeaderCell>
+                  <Table.HeaderCell style={{ whiteSpace: 'nowrap' }}>Title</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Status</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Executed</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Tax Code</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>Amount</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Date Initiated</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Due Date</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Review Date</Table.HeaderCell>
                 </Table.HeaderRow>
               </Table.Header>
               <Table.Body>

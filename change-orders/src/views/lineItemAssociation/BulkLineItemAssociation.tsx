@@ -253,14 +253,14 @@ export function BulkLineItemAssociation() {
               <Table style={{ width: '100%' }}>
                 <Table.Header>
                   <Table.HeaderRow>
-                    <Table.HeaderCell snugfit>#</Table.HeaderCell>
-                    <Table.HeaderCell>Description</Table.HeaderCell>
-                    <Table.HeaderCell snugfit>Budget code</Table.HeaderCell>
-                    <Table.HeaderCell snugfit>Tax code</Table.HeaderCell>
-                    <Table.HeaderCell snugfit style={{ textAlign: 'right' }}>Qty</Table.HeaderCell>
-                    <Table.HeaderCell snugfit>UOM</Table.HeaderCell>
-                    <Table.HeaderCell snugfit style={{ textAlign: 'right' }}>Amount</Table.HeaderCell>
-                    <Table.HeaderCell>Contract line association</Table.HeaderCell>
+                    <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>#</Table.HeaderCell>
+                    <Table.HeaderCell style={{ whiteSpace: 'nowrap' }}>Description</Table.HeaderCell>
+                    <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Budget code</Table.HeaderCell>
+                    <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Tax code</Table.HeaderCell>
+                    <Table.HeaderCell snugfit style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>Qty</Table.HeaderCell>
+                    <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>UOM</Table.HeaderCell>
+                    <Table.HeaderCell snugfit style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>Amount</Table.HeaderCell>
+                    <Table.HeaderCell style={{ whiteSpace: 'nowrap' }}>Contract line association</Table.HeaderCell>
                   </Table.HeaderRow>
                 </Table.Header>
                 <Table.Body>
@@ -359,13 +359,12 @@ export function BulkLineItemAssociation() {
                 </select>
                 <Button
                   variant="primary"
-                  size="sm"
                   disabled={!bulkTarget}
                   onClick={applyBulkAssign}
                 >
                   Apply
                 </Button>
-                <Button variant="tertiary" size="sm" onClick={clearSelection}>
+                <Button variant="tertiary" onClick={clearSelection}>
                   Cancel
                 </Button>
               </div>
@@ -382,14 +381,14 @@ export function BulkLineItemAssociation() {
                         aria-label="Select all"
                       />
                     </Table.HeaderCell>
-                    <Table.HeaderCell snugfit>#</Table.HeaderCell>
-                    <Table.HeaderCell>Description</Table.HeaderCell>
-                    <Table.HeaderCell snugfit>Budget code</Table.HeaderCell>
-                    <Table.HeaderCell snugfit>Tax code</Table.HeaderCell>
-                    <Table.HeaderCell snugfit style={{ textAlign: 'right' }}>Qty</Table.HeaderCell>
-                    <Table.HeaderCell snugfit>UOM</Table.HeaderCell>
-                    <Table.HeaderCell snugfit style={{ textAlign: 'right' }}>Amount</Table.HeaderCell>
-                    <Table.HeaderCell>Contract line association</Table.HeaderCell>
+                    <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>#</Table.HeaderCell>
+                    <Table.HeaderCell style={{ whiteSpace: 'nowrap' }}>Description</Table.HeaderCell>
+                    <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Budget code</Table.HeaderCell>
+                    <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Tax code</Table.HeaderCell>
+                    <Table.HeaderCell snugfit style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>Qty</Table.HeaderCell>
+                    <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>UOM</Table.HeaderCell>
+                    <Table.HeaderCell snugfit style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>Amount</Table.HeaderCell>
+                    <Table.HeaderCell style={{ whiteSpace: 'nowrap' }}>Contract line association</Table.HeaderCell>
                   </Table.HeaderRow>
                 </Table.Header>
                 <Table.Body>

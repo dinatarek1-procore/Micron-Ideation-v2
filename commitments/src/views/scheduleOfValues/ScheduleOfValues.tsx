@@ -200,16 +200,16 @@ export function ScheduleOfValues() {
 
           {/* SOV table */}
           <Table.Container>
-            <Table>
+            <Table style={{ width: '100%' }}>
               <Table.Header>
                 <Table.HeaderRow>
-                  <Table.HeaderCell snugfit>#</Table.HeaderCell>
-                  <Table.HeaderCell>Description</Table.HeaderCell>
-                  <Table.HeaderCell snugfit>Budget code</Table.HeaderCell>
-                  <Table.HeaderCell snugfit>Tax code</Table.HeaderCell>
-                  <Table.HeaderCell snugfit style={{ textAlign: 'right' }}>Original amount</Table.HeaderCell>
-                  <Table.HeaderCell snugfit style={{ textAlign: 'right' }}>Approved COs</Table.HeaderCell>
-                  <Table.HeaderCell snugfit style={{ textAlign: 'right' }}>Revised total</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>#</Table.HeaderCell>
+                  <Table.HeaderCell style={{ whiteSpace: 'nowrap' }}>Description</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Budget code</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Tax code</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>Original amount</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>Approved COs</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>Revised total</Table.HeaderCell>
                 </Table.HeaderRow>
               </Table.Header>
               <Table.Body>
