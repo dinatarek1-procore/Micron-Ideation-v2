@@ -44,7 +44,16 @@ function SovOriginalRow({ line, expanded, onToggle }: { line: SovLine; expanded:
         </Table.TextCell>
       </Table.BodyCell>
       <Table.BodyCell>
-        <Table.TextCell>{line.description}</Table.TextCell>
+        <Table.TextCell>
+          <div>
+            <div>{line.description}</div>
+            {line.approvedCOs.length > 0 && (
+              <div style={{ fontSize: 11, color: colors.gray50, marginTop: 2 }}>
+                +{line.approvedCOs.length} associated CCO{line.approvedCOs.length !== 1 ? 's' : ''}
+              </div>
+            )}
+          </div>
+        </Table.TextCell>
       </Table.BodyCell>
       <Table.BodyCell snugfit>
         <Table.TextCell><BudgetCodeCell code={line.budgetCode} name={line.budgetCodeName} /></Table.TextCell>
@@ -249,7 +258,12 @@ export function ScheduleOfValues() {
                 {newScopeCOs.length > 0 && (
                   <>
                     <Table.Group colSpan={9}>
-                      <Table.GroupTitle>New scope</Table.GroupTitle>
+                      <Table.GroupTitle>
+                        New scope
+                        <span style={{ fontSize: 11, fontWeight: 400, color: colors.gray50, marginLeft: 8 }}>
+                          +{newScopeCOs.length} associated CCO{newScopeCOs.length !== 1 ? 's' : ''}
+                        </span>
+                      </Table.GroupTitle>
                     </Table.Group>
                     {newScopeCOs.map((co) => <NewScopeRow key={co.id} co={co} onClick={() => setSelectedCO(co)} />)}
                   </>

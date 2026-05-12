@@ -36,27 +36,52 @@ interface CODisplayRow {
   associatedLine?: SovLine;
 }
 
+// Generate mock date metadata for each CO by a stable offset from a base date
+function mockMeta(seed: number) {
+  const baseInitiated = new Date('2024-10-01');
+  const baseReview = new Date('2025-04-01');
+  const dayOffsetI = (seed * 3) % 90;
+  const dayOffsetR = (seed * 7) % 60;
+  const initiated = new Date(baseInitiated);
+  initiated.setDate(initiated.getDate() + dayOffsetI);
+  const review = new Date(baseReview);
+  review.setDate(review.getDate() + dayOffsetR);
+  const fmt = (d: Date) => `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`;
+  return {
+    dateInitiated: fmt(initiated),
+    reviewDate: fmt(review),
+    executed: seed % 15 === 0,
+    revision: seed % 20 === 0 ? 1 : 0,
+  };
+}
+
 const allCORows: CODisplayRow[] = [
   ...sovLines.flatMap((line) =>
-    line.approvedCOs.map((co) => ({
-      co,
-      revision: 0,
-      executed: false,
-      dateInitiated: '10/15/2024',
-      dueDate: undefined,
-      reviewDate: '4/8/2025',
-      associatedLine: line,
-    }))
+    line.approvedCOs.map((co, idx) => {
+      const meta = mockMeta(co.id + idx);
+      return {
+        co,
+        revision: meta.revision,
+        executed: meta.executed,
+        dateInitiated: meta.dateInitiated,
+        dueDate: undefined,
+        reviewDate: meta.reviewDate,
+        associatedLine: line,
+      };
+    })
   ),
-  {
-    co: newScopeCOs[0],
-    revision: 1,
-    executed: false,
-    dateInitiated: '11/02/2024',
-    dueDate: undefined,
-    reviewDate: '4/15/2025',
-    associatedLine: undefined,
-  },
+  ...newScopeCOs.map((co, idx) => {
+    const meta = mockMeta(co.id + idx + 500);
+    return {
+      co,
+      revision: meta.revision,
+      executed: meta.executed,
+      dateInitiated: meta.dateInitiated,
+      dueDate: undefined,
+      reviewDate: meta.reviewDate,
+      associatedLine: undefined,
+    };
+  }),
 ];
 
 export function ChangeOrdersIndex() {

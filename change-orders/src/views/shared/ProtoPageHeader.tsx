@@ -26,7 +26,7 @@ export function ProtoPageHeader({ title, subtitle, actions, tabs }: ProtoPageHea
     String(companyId ?? GUARDRAILS.DEMO_ROUTE.COMPANY_ID)
   );
   const itemBase = itemId ? `${base}/items/${itemId}` : null;
-  const homeHref = 'file:///Users/dina/my-ai-workspace/Micron%20Ideation/prototype-directory.html';
+  const homeHref = 'https://v0-micron-ideation-repo.vercel.app/prototype-directory.html';
 
   return (
     <div style={{ background: '#fff', marginBottom: 24 }}>
