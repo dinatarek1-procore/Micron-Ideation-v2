@@ -224,7 +224,7 @@
   <div class="section-label">Commitments tool</div>
   <div class="cards">
 
-    <a class="card blue" href="http://localhost:3000/companies/1/tools/prototype/items/1/schedule-of-values" target="_blank">
+    <a class="card blue" data-path="commitments/companies/1/tools/prototype/items/1/schedule-of-values" href="#" target="_blank">
       <div class="card-stripe"></div>
       <div class="card-body">
         <div class="card-tag">Commitments</div>
@@ -237,7 +237,7 @@
       </div>
     </a>
 
-    <a class="card blue" href="http://localhost:3000/companies/1/tools/prototype/items/1/change-orders" target="_blank">
+    <a class="card blue" data-path="commitments/companies/1/tools/prototype/items/1/change-orders" href="#" target="_blank">
       <div class="card-stripe"></div>
       <div class="card-body">
         <div class="card-tag">Commitments</div>
@@ -256,7 +256,7 @@
   <div class="section-label">Change Orders tool</div>
   <div class="cards">
 
-    <a class="card orange" href="http://localhost:3001/companies/1/tools/prototype/items/1/schedule-of-values" target="_blank">
+    <a class="card orange" data-path="change-orders/companies/1/tools/prototype/items/1/schedule-of-values" href="#" target="_blank">
       <div class="card-stripe"></div>
       <div class="card-body">
         <div class="card-tag">Change Orders</div>
@@ -269,7 +269,7 @@
       </div>
     </a>
 
-    <a class="card green" href="http://localhost:3001/companies/1/tools/prototype/items/1/line-item-association" target="_blank">
+    <a class="card green" data-path="change-orders/companies/1/tools/prototype/items/1/line-item-association" href="#" target="_blank">
       <div class="card-stripe"></div>
       <div class="card-body">
         <div class="card-tag">Post-GA concept</div>
@@ -286,6 +286,22 @@
 
 
 </div>
+
+<script>
+  // On localhost: commitments → :3000, change-orders → :3001
+  // On Vercel (or any other host): use relative paths via vercel.json rewrites
+  const isLocal = window.location.hostname === 'localhost';
+  document.querySelectorAll('a[data-path]').forEach(function(a) {
+    const path = a.getAttribute('data-path');
+    if (isLocal) {
+      const port = path.startsWith('commitments') ? '3000' : '3001';
+      const route = path.replace(/^(commitments|change-orders)\//, '');
+      a.href = 'http://localhost:' + port + '/' + route;
+    } else {
+      a.href = '/' + path;
+    }
+  });
+</script>
 
 </body>
 </html>
