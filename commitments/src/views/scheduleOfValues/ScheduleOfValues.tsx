@@ -53,6 +53,12 @@ function SovOriginalRow({ line, expanded, onToggle }: { line: SovLine; expanded:
         <Table.TextCell style={{ color: colors.gray50 }}>—</Table.TextCell>
       </Table.BodyCell>
       <Table.BodyCell snugfit>
+        <Table.TextCell style={{ justifyContent: 'flex-end' }}>{line.qty}</Table.TextCell>
+      </Table.BodyCell>
+      <Table.BodyCell snugfit>
+        <Table.TextCell>{line.uom}</Table.TextCell>
+      </Table.BodyCell>
+      <Table.BodyCell snugfit>
         <Table.TextCell style={{ justifyContent: 'flex-end' }}>{formatCurrency(line.originalAmount)}</Table.TextCell>
       </Table.BodyCell>
       <Table.BodyCell snugfit>
@@ -88,6 +94,12 @@ function CORRow({ co, onClick }: { co: ApprovedCO; onClick: () => void }) {
         <Table.TextCell>{co.taxCode}</Table.TextCell>
       </Table.BodyCell>
       <Table.BodyCell snugfit>
+        <Table.TextCell style={{ justifyContent: 'flex-end' }}>{co.qty}</Table.TextCell>
+      </Table.BodyCell>
+      <Table.BodyCell snugfit>
+        <Table.TextCell>{co.uom}</Table.TextCell>
+      </Table.BodyCell>
+      <Table.BodyCell snugfit>
         <Table.TextCell style={{ justifyContent: 'flex-end', color: colors.gray45 }}>—</Table.TextCell>
       </Table.BodyCell>
       <Table.BodyCell snugfit>
@@ -119,6 +131,12 @@ function NewScopeRow({ co, onClick }: { co: ApprovedCO; onClick: () => void }) {
       </Table.BodyCell>
       <Table.BodyCell snugfit>
         <Table.TextCell>{co.taxCode}</Table.TextCell>
+      </Table.BodyCell>
+      <Table.BodyCell snugfit>
+        <Table.TextCell style={{ justifyContent: 'flex-end' }}>{co.qty}</Table.TextCell>
+      </Table.BodyCell>
+      <Table.BodyCell snugfit>
+        <Table.TextCell>{co.uom}</Table.TextCell>
       </Table.BodyCell>
       <Table.BodyCell snugfit>
         <Table.TextCell style={{ justifyContent: 'flex-end', color: '#999' }}>—</Table.TextCell>
@@ -207,6 +225,8 @@ export function ScheduleOfValues() {
                   <Table.HeaderCell style={{ whiteSpace: 'nowrap' }}>Description</Table.HeaderCell>
                   <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Budget code</Table.HeaderCell>
                   <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Tax code</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>Qty</Table.HeaderCell>
+                  <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>UOM</Table.HeaderCell>
                   <Table.HeaderCell snugfit style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>Original amount</Table.HeaderCell>
                   <Table.HeaderCell snugfit style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>Approved COs</Table.HeaderCell>
                   <Table.HeaderCell snugfit style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>Revised total</Table.HeaderCell>
@@ -228,7 +248,7 @@ export function ScheduleOfValues() {
 
                 {newScopeCOs.length > 0 && (
                   <>
-                    <Table.Group colSpan={7}>
+                    <Table.Group colSpan={9}>
                       <Table.GroupTitle>New scope</Table.GroupTitle>
                     </Table.Group>
                     {newScopeCOs.map((co) => <NewScopeRow key={co.id} co={co} onClick={() => setSelectedCO(co)} />)}
@@ -237,7 +257,7 @@ export function ScheduleOfValues() {
 
                 {/* Totals footer */}
                 <Table.BodyRow style={{ background: colors.gray96, fontWeight: 600 }}>
-                  <Table.BodyCell colSpan={4}>
+                  <Table.BodyCell colSpan={6}>
                     <Table.TextCell><strong>Total</strong></Table.TextCell>
                   </Table.BodyCell>
                   <Table.BodyCell snugfit>

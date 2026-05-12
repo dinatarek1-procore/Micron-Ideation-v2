@@ -4,6 +4,8 @@ export interface SovLine {
   description: string;
   budgetCode: string;
   budgetCodeName: string;
+  qty: number;
+  uom: string;
   originalAmount: number;
   approvedCOs: ApprovedCO[];
   isNewScope?: boolean;
@@ -53,6 +55,8 @@ export const sovLines: SovLine[] = [
     description: 'Concrete Work',
     budgetCode: '03-100',
     budgetCodeName: 'Concrete Forming',
+    qty: 2500,
+    uom: 'CY',
     originalAmount: 500_000,
     approvedCOs: [
       {
@@ -75,6 +79,8 @@ export const sovLines: SovLine[] = [
     description: 'Finishes',
     budgetCode: '09-900',
     budgetCodeName: 'Paints and Coatings',
+    qty: 8000,
+    uom: 'SF',
     originalAmount: 200_000,
     approvedCOs: [],
   },
@@ -85,6 +91,8 @@ export const sovLines: SovLine[] = [
     description: 'Specialty Finishes',
     budgetCode: '09-900',
     budgetCodeName: 'Paints and Coatings',
+    qty: 1,
+    uom: 'LS',
     originalAmount: 75_000,
     approvedCOs: [
       {

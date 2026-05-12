@@ -3,7 +3,7 @@ import { Box, Button, DetailPage, Panel, Pill, Table, Typography, colors } from 
 import { useParams } from '@tanstack/react-router';
 import { GUARDRAILS } from '@/shared/guardrails';
 import { ProtoPageHeader } from '../shared/ProtoPageHeader';
-import { sovLines, contractData, formatCurrency, newScopeCOs, type ApprovedCO } from '../scheduleOfValues/sovData';
+import { sovLines, contractData, formatCurrency, newScopeCOs, type ApprovedCO, type SovLine } from '../scheduleOfValues/sovData';
 import { ChangeOrderTaggingModal } from '../scheduleOfValues/ChangeOrderTaggingModal';
 
 function BudgetCodeCell({ code, name }: { code: string; name: string }) {
@@ -33,6 +33,7 @@ interface CODisplayRow {
   dateInitiated: string;
   dueDate?: string;
   reviewDate?: string;
+  associatedLine?: SovLine;
 }
 
 const allCORows: CODisplayRow[] = [
@@ -44,6 +45,7 @@ const allCORows: CODisplayRow[] = [
       dateInitiated: '10/15/2024',
       dueDate: undefined,
       reviewDate: '4/8/2025',
+      associatedLine: line,
     }))
   ),
   {
@@ -53,12 +55,18 @@ const allCORows: CODisplayRow[] = [
     dateInitiated: '11/02/2024',
     dueDate: undefined,
     reviewDate: '4/15/2025',
+    associatedLine: undefined,
   },
 ];
 
 export function ChangeOrdersIndex() {
   const [showTagModal, setShowTagModal] = useState(false);
   const [selectedRow, setSelectedRow] = useState<CODisplayRow | null>(null);
+
+  const ccoCountByLine = allCORows.reduce<Record<number, number>>((acc, r) => {
+    if (r.associatedLine) acc[r.associatedLine.id] = (acc[r.associatedLine.id] ?? 0) + 1;
+    return acc;
+  }, {});
 
   const { companyId, itemId } = useParams({ strict: false });
   const coToolBase = window.location.origin.replace(':3000', ':3001');
@@ -149,6 +157,7 @@ export function ChangeOrdersIndex() {
                   <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Date Initiated</Table.HeaderCell>
                   <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Due Date</Table.HeaderCell>
                   <Table.HeaderCell snugfit style={{ whiteSpace: 'nowrap' }}>Review Date</Table.HeaderCell>
+                  <Table.HeaderCell style={{ whiteSpace: 'nowrap' }}>Contract line item</Table.HeaderCell>
                 </Table.HeaderRow>
               </Table.Header>
               <Table.Body>
@@ -200,6 +209,20 @@ export function ChangeOrdersIndex() {
                     <Table.BodyCell snugfit>
                       <Table.TextCell>{row.reviewDate ?? '—'}</Table.TextCell>
                     </Table.BodyCell>
+                    <Table.BodyCell>
+                      <Table.TextCell>
+                        {row.associatedLine ? (
+                          <div>
+                            <div style={{ color: colors.gray60 }}>Line {row.associatedLine.lineNumber} — {row.associatedLine.description}</div>
+                            <div style={{ fontSize: 11, color: colors.gray50, marginTop: 2 }}>
+                              +{ccoCountByLine[row.associatedLine.id] ?? 0} associated CCO{(ccoCountByLine[row.associatedLine.id] ?? 0) !== 1 ? 's' : ''}
+                            </div>
+                          </div>
+                        ) : (
+                          <span style={{ color: colors.gray50 }}>—</span>
+                        )}
+                      </Table.TextCell>
+                    </Table.BodyCell>
                   </Table.BodyRow>
                 ))}
               </Table.Body>
@@ -245,6 +268,11 @@ export function ChangeOrdersIndex() {
                     <DetailRow label="Executed">{selectedRow.executed ? 'Yes' : 'No'}</DetailRow>
                     <DetailRow label="Date Initiated">{selectedRow.dateInitiated}</DetailRow>
                     <DetailRow label="Review Date">{selectedRow.reviewDate ?? '—'}</DetailRow>
+                    <DetailRow label="Contract line item">
+                      {selectedRow.associatedLine
+                        ? <span style={{ color: colors.gray60 }}>Line {selectedRow.associatedLine.lineNumber} — {selectedRow.associatedLine.description}</span>
+                        : <span style={{ color: colors.gray50 }}>New scope</span>}
+                    </DetailRow>
                     <DetailRow label="Contract">
                       <span style={{ color: colors.gray60 }}>{contractData.number} · {contractData.title}</span>
                     </DetailRow>
