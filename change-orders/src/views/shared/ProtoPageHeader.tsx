@@ -26,7 +26,7 @@ export function ProtoPageHeader({ title, subtitle, actions, tabs }: ProtoPageHea
     String(companyId ?? GUARDRAILS.DEMO_ROUTE.COMPANY_ID)
   );
   const itemBase = itemId ? `${base}/items/${itemId}` : null;
-  const homeHref = 'http://localhost:3002/prototype-directory.html';
+  const homeHref = window.location.hostname === 'localhost' ? 'http://localhost:3002/' : '/';
 
   return (
     <div style={{ background: '#fff', marginBottom: 24 }}>
