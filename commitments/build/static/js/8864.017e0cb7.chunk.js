@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcommitments=self.webpackChunkcommitments||[]).push([[8864],{88864(e,t,m){m.r(t),m.d(t,{columns:()=>s.YB,default:()=>s.kv,emptyState:()=>s.p$,reactHookError:()=>s.fM});var s=m(35800)}}]);

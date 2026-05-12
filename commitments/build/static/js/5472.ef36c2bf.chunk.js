@@ -1,0 +1,6 @@
+"use strict";(self.webpackChunkcommitments=self.webpackChunkcommitments||[]).push([[5472],{35472(e,t,a){a.d(t,{TableFeature:()=>TableFeature});var r=a(64715),n=a(59477),l=a(37228),u=a(24484),s=a(78708),o=a(15716),c=a(43217),d=(0,o.styled)(l.a)`
+  height: 100%;
+`,i=(0,o.styled)(u.Z)`
+  height: 100%;
+`;function TableFeature({view:{feature:e}}){const{featureRef:t}=(0,r.At)({strict:!1}),{getValue:a}=(0,r.wn)(),l=(0,n.useRef)(null);(0,n.useImperativeHandle)(t,()=>l.current??{},[]);const u=a(e.schema);if(!u)return r.vF.error({message:"[T8r] schema config property is required for the table feature."}),null;return(0,c.jsx)(i,{children:(0,c.jsx)(d,{padding:"lg",children:(0,c.jsx)(s.X,{data:a(e.data),emptyStateRenderer:a(e.emptyStateRenderer),onCellValueChanged:a(e.onCellValueChanged),onRowDrag:a(e.onRowDrag),onRowSelected:a(e.onRowSelected),onServerSideDataRequest:a(e.onServerSideDataRequest),onTableReady:t=>{l.current=t,a(e.onTableReady)?.(t)},schema:u,uiSchema:a(e.uiSchema)})})})}}}]);
+//# sourceMappingURL=5472.ef36c2bf.chunk.js.map

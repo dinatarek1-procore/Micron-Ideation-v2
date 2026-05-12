@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkchange_orders=self.webpackChunkchange_orders||[]).push([[8864],{88864(e,r,a){a.r(r),a.d(r,{columns:()=>s.YB,default:()=>s.kv,emptyState:()=>s.p$,reactHookError:()=>s.fM});var s=a(35800)}}]);

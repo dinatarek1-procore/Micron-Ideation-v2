@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkchange_orders=self.webpackChunkchange_orders||[]).push([[1635],{1635(e,s,r){r.r(s),r.d(s,{default:()=>a.kv,relatedItems:()=>a.sl,views:()=>a.l8});var a=r(13542)}}]);

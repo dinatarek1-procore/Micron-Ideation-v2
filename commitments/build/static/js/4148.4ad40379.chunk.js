@@ -1,0 +1,6 @@
+"use strict";(self.webpackChunkcommitments=self.webpackChunkcommitments||[]).push([[4148],{64148(e,s,n){n.d(s,{PageLayout:()=>PageLayout});n(18111),n(61701);var a=n(67608),t=n(18178),r=n(80179),i=n(28074),l=n(77628),u=n(55882),b=n(64715),c=(n(59477),n(27536)),d=n(51643),j=n(15716),h=n(43217),x=(0,j.default)(c.YW)`
+  height: 100%;
+`,o=(0,j.default)(c.YW.Main)`
+  height: 100%;
+`;function PageLayout(e){const{view:s,viewName:n}=e,{getVisible:j}=(0,b.wn)();return j(s.visible)?(0,h.jsxs)(x,{"data-testid":`view-${n}`,children:[(0,h.jsxs)(o,{children:[(0,h.jsxs)(c.YW.Header,{children:[(0,u.Pb)(s.layout.breadcrumbs)&&(0,h.jsx)(c.YW.Breadcrumbs,{children:(0,h.jsx)(a.h,{...e})}),(0,u.Pb)(s.layout.banners)&&s.layout.banners?.map((s,n)=>(0,h.jsx)(c.YW.Banner,{children:(0,h.jsx)(t.n,{...e,banner:s})},(0,l.s)(s,n))),(0,h.jsx)(c.YW.Title,{children:(0,h.jsx)(r.$u,{...e})}),(0,u.Pb)(s.layout.tabs)&&(0,h.jsx)(c.YW.Tabs,{children:(0,h.jsx)(r.P4,{...e})})]}),(0,h.jsxs)(c.YW.Body,{children:[(0,u.Pb)(s.feature.banners)&&s.feature.banners?.map((s,n)=>(0,h.jsx)(c.YW.Banner,{children:(0,h.jsx)(t.n,{...e,banner:s})},(0,l.s)(s,n))),(0,h.jsx)(i.tX,{...e})]})]}),(0,h.jsx)(d.s,{})]}):(0,h.jsx)(u.jT,{})}}}]);
+//# sourceMappingURL=4148.4ad40379.chunk.js.map

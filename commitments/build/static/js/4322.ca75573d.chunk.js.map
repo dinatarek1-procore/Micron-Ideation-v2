@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/4322.ca75573d.chunk.js","mappings":"sIAGA,IAAIA,EAAiB,CAAC,C","sources":["../node_modules/@procore/related-items/dist/modern/pseudo-Q6EUABUB.mjs"],"sourcesContent":["import \"./chunk-4UEJOM6W.mjs\";\n\n// src/locales/pseudo.json\nvar pseudo_default = {};\nexport {\n  pseudo_default as default\n};\n"],"names":["pseudo_default"],"sourceRoot":""}
