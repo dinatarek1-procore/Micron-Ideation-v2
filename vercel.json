@@ -1,4 +1,6 @@
 {
+  "buildCommand": "",
+  "outputDirectory": ".",
   "rewrites": [
     { "source": "/commitments/:path*", "destination": "/commitments/build/index.html" },
     { "source": "/change-orders/:path*", "destination": "/change-orders/build/index.html" }
