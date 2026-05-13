@@ -1,6 +1,5 @@
 node_modules
 dist
-build
 storybook-static
 *.local
 .DS_Store
